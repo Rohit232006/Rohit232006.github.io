@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 <head>
   <meta charset="UTF-8" />
@@ -1498,439 +1497,6 @@
   </style>
 </head>
 
-=======
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rohit M — Product & UI/UX Designer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,560;0,9..144,650;1,9..144,450&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --background-deep:#050403;
-    --background-base:#0a0908;
-    --background-elevated:#151310;
-    --surface: rgba(255,255,255,0.045);
-    --surface-hover: rgba(255,255,255,0.075);
-    --foreground:#F3EEE4;
-    --foreground-muted:#9C9184;
-    --foreground-subtle: rgba(243,238,228,0.60);
-    --accent:#C9A876;
-    --accent-bright:#DFC08F;
-    --accent-pink:#8C6F42;
-    --accent-cyan:#EDE3CC;
-    --accent-gold:#B4924F;
-    --accent-glow: rgba(201,168,118,0.28);
-    --border-default: rgba(230,215,190,0.10);
-    --border-hover: rgba(230,215,190,0.20);
-    --border-accent: rgba(201,168,118,0.35);
-    --ease-expo: cubic-bezier(0.16,1,0.3,1);
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--background-base);
-    color:var(--foreground);
-    font-family:"Inter",system-ui,sans-serif;
-    overflow-x:hidden;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,h4{font-family:"Fraunces","Inter",serif;font-style:normal;}
-  ::selection{background:var(--accent-glow);color:#fff;}
-
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-
-  /* ---------------- Scrollbar ---------------- */
-  ::-webkit-scrollbar{width:10px;}
-  ::-webkit-scrollbar-track{background:var(--background-deep);}
-  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:8px;}
-  ::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.18);}
-
-  /* ---------------- Background system ---------------- */
-  .bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;}
-  .bg-base{
-    background:radial-gradient(ellipse at top, #171410 0%, #0a0908 50%, #050403 100%);
-  }
-  .bg-grid{
-    background-image:
-      linear-gradient(rgba(230,215,190,0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(230,215,190,0.018) 1px, transparent 1px);
-    background-size:64px 64px;
-    opacity:0.4;
-    mask-image: radial-gradient(ellipse at top, black 0%, transparent 70%);
-  }
-  .bg-noise{
-    opacity:0.03;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .blob{position:absolute;border-radius:50%;filter:blur(120px);will-change:transform;}
-  .blob-1{
-    top:-340px;left:46%;transform:translateX(-50%);
-    width:1100px;height:950px;
-    background:radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity:0.14;
-    animation:float1 12s ease-in-out infinite;
-  }
-  .blob-2{
-    top:8%;left:-280px;
-    width:680px;height:820px;
-    background:radial-gradient(circle, var(--accent-pink) 0%, transparent 70%);
-    opacity:0.10;
-    animation:float2 15s ease-in-out infinite;
-  }
-  .blob-3{
-    top:38%;right:-240px;
-    width:600px;height:720px;
-    background:radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
-    opacity:0.06;
-    animation:float1 13s ease-in-out infinite reverse;
-  }
-  .blob-4{
-    bottom:-220px;left:30%;
-    width:820px;height:620px;
-    background:radial-gradient(circle, var(--accent-gold) 0%, transparent 72%);
-    opacity:0.10;
-    animation:pulse 10s ease-in-out infinite;
-  }
-  .blob-5{
-    top:58%;left:55%;
-    width:500px;height:500px;
-    background:radial-gradient(circle, var(--accent) 0%, transparent 72%);
-    opacity:0.07;
-    animation:float2 16s ease-in-out infinite reverse;
-  }
-  @keyframes float1{0%,100%{transform:translate(-50%,0) rotate(0deg);}50%{transform:translate(-50%,-18px) rotate(0.6deg);}}
-  @keyframes float2{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-22px) rotate(-0.8deg);}}
-  @keyframes pulse{0%,100%{opacity:0.07;transform:scale(1);}50%{opacity:0.13;transform:scale(1.04);}}
-
-  section, header, footer{position:relative;z-index:1;}
-
-  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
-
-  /* ---------------- Nav ---------------- */
-  .nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    display:flex;justify-content:center;
-    padding-top:18px;
-    transition:padding 300ms var(--ease-expo);
-  }
-  .nav-inner{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:32px;
-    padding:10px 10px 10px 20px;
-    border-radius:100px;
-    border:1px solid var(--border-default);
-    background:rgba(8,8,10,0.6);
-    backdrop-filter:blur(20px) saturate(140%);
-    box-shadow:0 0 0 1px rgba(255,255,255,0.03), 0 8px 30px rgba(0,0,0,0.4);
-    width:min(720px, calc(100vw - 48px));
-  }
-  .brand{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:-0.01em;font-size:14px;}
-  .brand-mark{
-    width:26px;height:26px;border-radius:8px;
-    background:linear-gradient(135deg, var(--accent-bright), var(--accent) 60%, var(--accent-pink));
-    box-shadow:0 0 0 1px rgba(255,255,255,0.15) inset, 0 4px 14px rgba(201,168,118,0.4);
-    display:flex;align-items:center;justify-content:center;
-    font-family:"Fraunces",serif;
-    font-size:13px;font-weight:650;color:#171310;
-  }
-  .nav-links{display:flex;gap:4px;align-items:center;}
-  .nav-links a{
-    font-size:13px;color:var(--foreground-muted);padding:8px 14px;border-radius:100px;
-    transition:all 220ms var(--ease-expo);
-  }
-  .nav-links a:hover{color:var(--foreground);background:var(--surface);}
-  .nav-cta{
-    font-size:13px;font-weight:500;padding:9px 16px;border-radius:100px;
-    background:var(--foreground);color:#0a0a0c;
-    box-shadow:0 1px 0 0 rgba(255,255,255,0.4) inset;
-    transition:transform 200ms var(--ease-expo), box-shadow 200ms var(--ease-expo);
-  }
-  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,255,255,0.15);}
-  .nav-toggle{display:none;background:none;border:none;color:var(--foreground);padding:8px;cursor:pointer;}
-
-  /* ---------------- Buttons ---------------- */
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:13px 24px;border-radius:10px;font-size:14px;font-weight:500;
-    cursor:pointer;border:none;transition:transform 220ms var(--ease-expo), box-shadow 220ms var(--ease-expo), background 220ms var(--ease-expo);
-    position:relative;overflow:hidden;
-  }
-  .btn-primary{
-    background:linear-gradient(120deg, var(--accent-bright), var(--accent) 60%, var(--accent-gold));
-    background-size:180% auto;background-position:0% center;
-    color:#171310;font-weight:600;
-    box-shadow:0 0 0 1px rgba(201,168,118,0.45), 0 4px 20px rgba(201,168,118,0.3), inset 0 1px 0 0 rgba(255,255,255,0.4);
-  }
-  .btn-primary:hover{background-position:100% center;transform:translateY(-2px);box-shadow:0 0 0 1px rgba(201,168,118,0.55), 0 12px 34px rgba(201,168,118,0.38), inset 0 1px 0 0 rgba(255,255,255,0.3);}
-  .btn-primary:active{transform:scale(0.98) translateY(0);}
-  .btn-secondary{
-    background:var(--surface);color:var(--foreground);
-    box-shadow:inset 0 0 0 1px var(--border-default), inset 0 1px 0 0 rgba(255,255,255,0.06);
-  }
-  .btn-secondary:hover{background:var(--surface-hover);box-shadow:inset 0 0 0 1px var(--border-hover);transform:translateY(-2px);}
-  .btn-secondary:active{transform:scale(0.98) translateY(0);}
-
-  /* ---------------- Hero ---------------- */
-  .hero{
-    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
-    padding:150px 0 90px;
-  }
-  .hero-inner{will-change:transform, opacity;}
-  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:24px;align-items:center;}
-  .hero-3d{position:relative;height:520px;}
-  #heroCanvasWrap{position:absolute;inset:-40px;}
-  #heroCanvas{width:100%;height:100%;display:block;}
-  .orbit-chip{
-    position:absolute;
-    font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:0.02em;
-    padding:9px 15px;border-radius:100px;
-    border:1px solid var(--border-hover);
-    background:rgba(21,19,16,0.6);backdrop-filter:blur(14px);
-    box-shadow:0 8px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
-    color:var(--foreground-subtle);
-    animation:chipfloat 7s ease-in-out infinite;
-    pointer-events:none;
-  }
-  .chip-1{top:8%;left:-4%;animation-delay:0s;}
-  .chip-2{bottom:20%;right:-6%;animation-delay:1.4s;}
-  .chip-3{bottom:4%;left:8%;animation-delay:2.8s;}
-  @keyframes chipfloat{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-12px) rotate(-1deg);}}
-  @media (max-width:860px){
-    .hero-grid{grid-template-columns:1fr;}
-    .hero-3d{height:340px;order:-1;margin-bottom:8px;}
-    .orbit-chip{display:none;}
-  }
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:0.08em;
-    color:var(--foreground-subtle);
-    padding:7px 14px 7px 10px;border-radius:100px;
-    border:1px solid var(--border-accent);
-    background:rgba(201,168,118,0.07);
-    margin-bottom:28px;
-  }
-  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-bright);box-shadow:0 0 8px var(--accent-bright);flex-shrink:0;}
-
-  .hero h1{
-    font-family:"Fraunces","Inter",serif;
-    font-size:clamp(46px, 8.6vw, 108px);
-    font-weight:560;
-    font-optical-sizing:auto;
-    line-height:0.98;
-    letter-spacing:-0.02em;
-    max-width:920px;
-  }
-  .hero h1 em{font-style:italic;font-weight:450;}
-  .hero h1 .line{display:block;overflow:hidden;}
-  .hero h1 .line span{display:block;transform:translateY(110%);transition:transform 900ms var(--ease-expo);}
-  .hero.in .hero h1 .line span, .hero h1.reveal .line span{transform:translateY(0);}
-  .grad-white{
-    background:linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.95) 45%, rgba(255,255,255,0.7) 100%);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .grad-accent{
-    background:linear-gradient(90deg, var(--accent-bright), var(--accent-gold) 50%, var(--accent-bright));
-    background-size:220% auto;
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:shimmer 9s linear infinite;
-  }
-  @keyframes shimmer{to{background-position:220% center;}}
-
-  .hero p.lead{
-    margin-top:26px;max-width:540px;
-    font-size:clamp(16px,2vw,19px);line-height:1.65;
-    color:var(--foreground-muted);
-  }
-  .hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap;}
-
-  .hero-meta{
-    margin-top:80px;display:flex;gap:0;flex-wrap:wrap;
-    border-top:1px solid var(--border-default);
-    padding-top:28px;
-  }
-  .meta-item{padding-right:44px;margin-right:44px;border-right:1px solid var(--border-default);}
-  .meta-item:last-child{border-right:none;margin-right:0;padding-right:0;}
-  .meta-item .num{font-size:26px;font-weight:600;letter-spacing:-0.02em;}
-  .meta-item .lbl{font-size:12.5px;color:var(--foreground-muted);margin-top:4px;}
-
-  /* ---------------- Section shell ---------------- */
-  .section{padding:112px 0;border-top:1px solid var(--border-default);}
-  .section-head{max-width:600px;margin-bottom:56px;}
-  .tag{
-    font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);
-    letter-spacing:0.06em;margin-bottom:16px;display:block;
-  }
-  .section-head h2{font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-0.02em;line-height:1.15;}
-  .section-head p{margin-top:14px;color:var(--foreground-muted);font-size:16px;line-height:1.65;max-width:520px;}
-
-  .reveal{opacity:0;transform:translateY(28px);transition:opacity 700ms var(--ease-expo), transform 700ms var(--ease-expo);}
-  .reveal.visible{opacity:1;transform:translateY(0);}
-
-  /* ---------------- About ---------------- */
-  .about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:start;}
-  .about-copy p{color:var(--foreground-muted);font-size:16px;line-height:1.8;margin-bottom:18px;}
-  .about-copy strong{color:var(--foreground);font-weight:500;}
-
-  .stat-card{
-    border-radius:22px;border:1px solid var(--border-default);
-    background:linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
-    box-shadow:0 0 0 1px rgba(255,255,255,0.02), 0 2px 20px rgba(0,0,0,0.4);
-    padding:22px 22px;
-    transition:border-color 250ms var(--ease-expo), transform 250ms var(--ease-expo), box-shadow 250ms var(--ease-expo);
-  }
-  .stat-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 0 0 1px rgba(255,255,255,0.06), 0 10px 40px rgba(0,0,0,0.5), 0 0 60px rgba(201,168,118,0.10);}
-  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-  .stat-card .num{font-size:30px;font-weight:600;letter-spacing:-0.02em;}
-  .stat-card .lbl{font-size:13px;color:var(--foreground-muted);margin-top:6px;}
-  .stat-card.wide{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;}
-
-  /* ---------------- Bento / cards common ---------------- */
-  .tilt-card{
-    position:relative;border-radius:22px;
-    border:1px solid var(--border-default);
-    background:linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
-    box-shadow:0 0 0 1px rgba(255,255,255,0.02), 0 2px 20px rgba(0,0,0,0.4), 0 0 40px rgba(0,0,0,0.2);
-    overflow:hidden;
-    transition:transform 260ms var(--ease-expo), box-shadow 260ms var(--ease-expo), border-color 260ms var(--ease-expo);
-    will-change:transform;
-  }
-  .tilt-card:hover{
-    border-color:var(--border-hover);
-    box-shadow:0 0 0 1px rgba(255,255,255,0.08), 0 14px 46px rgba(0,0,0,0.55), 0 0 90px rgba(201,168,118,0.16);
-  }
-  .tilt-card::before{
-    content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
-    background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%), rgba(201,168,118,0.16), transparent 70%);
-    opacity:0;transition:opacity 300ms ease;
-  }
-  .tilt-card:hover::before{opacity:1;}
-  .tilt-card-inner{position:relative;z-index:1;padding:28px;height:100%;display:flex;flex-direction:column;}
-
-  /* ---------------- Skills ---------------- */
-  .skills-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;grid-auto-rows:minmax(150px,auto);}
-  .skills-grid .tilt-card.span-3{grid-column:span 3;}
-  .skills-grid .tilt-card.span-2{grid-column:span 2;}
-  .skills-grid .tilt-card.span-6{grid-column:span 6;}
-  .skill-icon{
-    width:38px;height:38px;border-radius:10px;
-    background:var(--surface);border:1px solid var(--border-default);
-    display:flex;align-items:center;justify-content:center;
-    font-size:16px;margin-bottom:16px;
-  }
-  .tilt-card h3{font-size:17px;font-weight:600;letter-spacing:-0.01em;margin-bottom:8px;}
-  .tilt-card .desc{font-size:13.5px;color:var(--foreground-muted);line-height:1.6;}
-  .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:16px;}
-  .chip{
-    font-size:12.5px;padding:6px 12px;border-radius:100px;
-    border:1px solid var(--border-default);background:rgba(255,255,255,0.03);
-    color:var(--foreground-subtle);
-    font-family:"JetBrains Mono",monospace;
-  }
-  .chip.accent{border-color:var(--border-accent);color:#E9D6A8;background:rgba(201,168,118,0.10);}
-
-  /* ---------------- Projects (asymmetric bento) ---------------- */
-  .projects-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;grid-auto-rows:200px;}
-  .proj.hero-proj{grid-column:span 4;grid-row:span 2;}
-  .proj.tall{grid-column:span 2;grid-row:span 2;}
-  .proj.wide{grid-column:span 3;grid-row:span 1;}
-  .proj.reg{grid-column:span 3;grid-row:span 1;}
-  .proj{cursor:default;}
-  .proj-thumb{
-    flex:1;border-radius:10px;margin-bottom:18px;
-    display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;
-    border:1px solid var(--border-default);
-    min-height:70px;
-  }
-  .proj.hero-proj .proj-thumb{min-height:150px;}
-  .proj-status{
-    position:absolute;top:14px;right:14px;
-    font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:0.06em;
-    padding:4px 9px;border-radius:100px;
-    background:rgba(0,0,0,0.4);backdrop-filter:blur(8px);
-    border:1px solid rgba(255,255,255,0.1);color:var(--foreground-subtle);
-  }
-  .proj-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
-  .proj-tags span{font-size:11.5px;color:var(--foreground-muted);font-family:"JetBrains Mono",monospace;}
-  .proj-tags span:not(:last-child)::after{content:"/";margin-left:6px;color:var(--border-hover);}
-  .proj .desc{margin-top:8px;}
-  .proj-meta-row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;}
-  .proj-year{font-size:12px;color:var(--foreground-subtle);font-family:"JetBrains Mono",monospace;}
-
-  .glyph{width:100%;height:100%;position:relative;}
-
-  /* ---------------- Timeline (achievements) ---------------- */
-  .timeline{border-left:1px solid var(--border-default);margin-left:6px;}
-  .t-item{position:relative;padding:0 0 44px 32px;}
-  .t-item:last-child{padding-bottom:0;}
-  .t-item::before{
-    content:"";position:absolute;left:-5.5px;top:4px;width:10px;height:10px;border-radius:50%;
-    background:var(--background-base);border:2px solid var(--accent);
-    box-shadow:0 0 0 4px rgba(201,168,118,0.16);
-  }
-  .t-item h4{font-size:16px;font-weight:600;margin-bottom:6px;letter-spacing:-0.01em;}
-  .t-item .t-role{color:var(--accent-bright);font-weight:500;}
-  .t-item p{color:var(--foreground-muted);font-size:14.5px;line-height:1.7;max-width:600px;}
-
-  /* ---------------- Education / Certs ---------------- */
-  .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .list-card{
-    border-radius:22px;border:1px solid var(--border-default);
-    background:var(--surface);padding:26px;
-  }
-  .list-card h3{font-size:14px;font-family:"JetBrains Mono",monospace;color:var(--foreground-muted);letter-spacing:0.04em;margin-bottom:20px;}
-  .edu-row{padding:16px 0;border-top:1px solid var(--border-default);}
-  .edu-row:first-of-type{border-top:none;padding-top:0;}
-  .edu-row .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
-  .edu-row .top .name{font-weight:600;font-size:15px;}
-  .edu-row .top .yr{font-size:12.5px;color:var(--foreground-subtle);font-family:"JetBrains Mono",monospace;white-space:nowrap;}
-  .edu-row .sub{color:var(--foreground-muted);font-size:13.5px;margin-top:4px;}
-
-  /* ---------------- Contact ---------------- */
-  .contact-card{
-    border-radius:24px;position:relative;overflow:hidden;
-    border:1px solid var(--border-accent);
-    background:radial-gradient(ellipse at top left, rgba(201,168,118,0.12), transparent 60%), var(--background-elevated);
-    padding:72px 56px;text-align:center;
-    box-shadow:0 0 0 1px rgba(255,255,255,0.03), 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .contact-card h2{font-size:clamp(30px,5vw,52px);font-weight:600;letter-spacing:-0.02em;max-width:640px;margin:0 auto;}
-  .contact-card p.lead{color:var(--foreground-muted);margin:18px auto 34px;max-width:440px;}
-  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .contact-links a.social{
-    font-size:13.5px;color:var(--foreground-muted);padding:10px 18px;border-radius:100px;
-    border:1px solid var(--border-default);transition:all 220ms var(--ease-expo);
-  }
-  .contact-links a.social:hover{color:var(--foreground);border-color:var(--border-hover);background:var(--surface);transform:translateY(-2px);}
-
-  footer{padding:36px 0 48px;}
-  .footer-inner{display:flex;justify-content:space-between;align-items:center;color:var(--foreground-subtle);font-size:13px;flex-wrap:wrap;gap:12px;}
-  .footer-inner .fmark{font-family:"JetBrains Mono",monospace;}
-
-  @media (max-width:860px){
-    .nav-links{display:none;}
-    .nav-toggle{display:flex;}
-    .about-grid{grid-template-columns:1fr;gap:40px;}
-    .skills-grid{grid-template-columns:repeat(2,1fr);}
-    .skills-grid .tilt-card.span-3, .skills-grid .tilt-card.span-2, .skills-grid .tilt-card.span-6{grid-column:span 2;}
-    .projects-grid{grid-template-columns:1fr;grid-auto-rows:auto;}
-    .proj.hero-proj, .proj.tall, .proj.wide, .proj.reg{grid-column:span 1;grid-row:span 1;}
-    .proj .proj-thumb{min-height:120px !important;}
-    .split-grid{grid-template-columns:1fr;}
-    .section{padding:76px 0;}
-    .hero{padding-top:120px;}
-    .hero-meta{gap:20px 0;}
-    .meta-item{padding-right:24px;margin-right:24px;}
-    .contact-card{padding:48px 24px;}
-  }
-</style>
-</head>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
 <body>
 
   <div class="bg-layer bg-base"></div>
@@ -1962,7 +1528,6 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
-<<<<<<< HEAD
 
     <!-- Background: subtle 3D gem behind the text -->
     <div class="hero-canvas-bg" aria-hidden="true">
@@ -1992,32 +1557,19 @@
         <div class="hero-copy">
           <div class="eyebrow reveal visible"><span class="dot"></span>Open to UI/UX &amp; frontend roles — Chennai
           </div>
-=======
-    <div class="container">
-      <div class="hero-grid hero-inner" id="heroParallax">
-        <div class="hero-copy">
-          <div class="eyebrow reveal visible"><span class="dot"></span>Open to UI/UX & frontend roles — Chennai</div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           <h1 class="reveal visible">
             <span class="line"><span class="grad-white">Designing interfaces</span></span>
             <span class="line"><span class="grad-white">that feel</span> <em class="grad-accent">inevitable.</em></span>
           </h1>
           <p class="lead reveal visible" style="transition-delay:120ms">
-<<<<<<< HEAD
             Final-year Computer Science &amp; Business Systems student in Chennai, working at the
             intersection of product design and front-end engineering — from research and wireframes
             to pixel-precise, interactive UI.
-=======
-            Final-year Computer Science &amp; Business Systems student in Chennai, working at the intersection
-            of product design and front-end engineering — from research and wireframes to
-            pixel-precise, interactive UI.
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           </p>
           <div class="hero-actions reveal visible" style="transition-delay:200ms">
             <a href="#work" class="btn btn-primary">View selected work</a>
             <a href="#contact" class="btn btn-secondary">Get in touch</a>
           </div>
-<<<<<<< HEAD
           <div class="hero-meta reveal visible" style="transition-delay:300ms">
             <div class="meta-item">
               <div class="num">5+</div>
@@ -2116,54 +1668,6 @@
 
       </div>
 
-=======
-
-          <div class="hero-meta reveal visible" style="transition-delay:280ms">
-            <div class="meta-item"><div class="num">5+</div><div class="lbl">Case studies &amp; live projects</div></div>
-            <div class="meta-item"><div class="num">2027</div><div class="lbl">B.Tech CSBS graduate</div></div>
-            <div class="meta-item"><div class="num">3</div><div class="lbl">UX / design certifications</div></div>
-          </div>
-        </div>
-
-        <div class="hero-3d reveal visible" style="transition-delay:160ms">
-          <div id="heroCanvasWrap"><canvas id="heroCanvas"></canvas></div>
-          <div class="orbit-chip chip-1">Figma → Code</div>
-          <div class="orbit-chip chip-2">UX Research</div>
-          <div class="orbit-chip chip-3">Design Systems</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container about-grid">
-      <div>
-        <span class="tag reveal">// about</span>
-        <h2 class="reveal" style="max-width:480px;">A CS student who designs like a product person, and ships like an engineer.</h2>
-        <div class="about-copy" style="margin-top:28px;">
-          <p class="reveal">I'm <strong>Rohit</strong>, a final-year B.Tech student in Computer Science and Business
-          Systems at Panimalar Engineering College, Chennai. I split my time between studying
-          systems and building them — writing HTML, CSS and Java on one side, and running full
-          UX processes in Figma on the other.</p>
-          <p class="reveal">Freelance, I work with local businesses and founders on branding, UI/UX and website
-          design — usually starting from research and information architecture, and finishing
-          with a design system a real team could build from. My major project, <strong>AgentOS</strong>,
-          is an AI-powered productivity workspace I'm designing end-to-end for my degree.</p>
-        </div>
-      </div>
-
-      <div class="stat-grid">
-        <div class="stat-card reveal"><div class="num">7.5</div><div class="lbl">CGPA, B.Tech CSBS</div></div>
-        <div class="stat-card reveal" style="transition-delay:60ms"><div class="num">71%</div><div class="lbl">Class XII, MCC Matriculation HSS</div></div>
-        <div class="stat-card reveal" style="transition-delay:120ms"><div class="num">6mo</div><div class="lbl">UX/UI Mastery, WEBD School</div></div>
-        <div class="stat-card reveal" style="transition-delay:180ms"><div class="num">ICON</div><div class="lbl">Co-authored paper, IConIC 2025</div></div>
-        <div class="stat-card wide reveal" style="transition-delay:240ms">
-          <div><div class="lbl" style="margin-top:0;">Currently designing</div><div class="num" style="font-size:19px;margin-top:4px;">AgentOS — AI Workspace</div></div>
-          <div class="skill-icon" style="margin:0;">◎</div>
-        </div>
-      </div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
     </div>
   </section>
 
@@ -2182,12 +1686,8 @@
             <div class="skill-icon">◆</div>
             <h3>Product Design</h3>
             <p class="desc">User flows, wireframing, prototyping and design systems built for handoff.</p>
-<<<<<<< HEAD
             <div class="chip-row"><span class="chip accent">Figma</span><span class="chip accent">Framer</span><span
                 class="chip">Google Stitch</span></div>
-=======
-            <div class="chip-row"><span class="chip accent">Figma</span><span class="chip accent">Framer</span><span class="chip">Google Stitch</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           </div>
         </div>
         <div class="tilt-card span-2 reveal" style="transition-delay:60ms">
@@ -2195,12 +1695,8 @@
             <div class="skill-icon">▣</div>
             <h3>Visual &amp; Brand</h3>
             <p class="desc">Identity, layout and asset production for brands and marketing surfaces.</p>
-<<<<<<< HEAD
             <div class="chip-row"><span class="chip accent">Photoshop</span><span class="chip accent">Illustrator</span>
             </div>
-=======
-            <div class="chip-row"><span class="chip accent">Photoshop</span><span class="chip accent">Illustrator</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           </div>
         </div>
         <div class="tilt-card span-2 reveal" style="transition-delay:120ms">
@@ -2208,12 +1704,8 @@
             <div class="skill-icon">〈/〉</div>
             <h3>Front-End</h3>
             <p class="desc">Turning static designs into structured, styled, working interfaces.</p>
-<<<<<<< HEAD
             <div class="chip-row"><span class="chip accent">HTML</span><span class="chip accent">CSS</span><span
                 class="chip accent">Java</span><span class="chip">VS Code</span></div>
-=======
-            <div class="chip-row"><span class="chip accent">HTML</span><span class="chip accent">CSS</span><span class="chip accent">Java</span><span class="chip">VS Code</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           </div>
         </div>
 
@@ -2221,30 +1713,20 @@
           <div class="tilt-card-inner">
             <div class="skill-icon">◈</div>
             <h3>Research &amp; Validation</h3>
-<<<<<<< HEAD
             <p class="desc">Personas, journey maps, affinity mapping and usability testing that keep decisions grounded
               in real user behaviour rather than assumption.</p>
             <div class="chip-row"><span class="chip">Hotjar</span><span class="chip">Usability testing</span><span
                 class="chip">Survey synthesis</span></div>
-=======
-            <p class="desc">Personas, journey maps, affinity mapping and usability testing that keep decisions grounded in real user behaviour rather than assumption.</p>
-            <div class="chip-row"><span class="chip">Hotjar</span><span class="chip">Usability testing</span><span class="chip">Survey synthesis</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           </div>
         </div>
         <div class="tilt-card span-3 reveal" style="transition-delay:60ms">
           <div class="tilt-card-inner">
             <div class="skill-icon">✦</div>
             <h3>Ship &amp; Publish</h3>
-<<<<<<< HEAD
             <p class="desc">Comfortable taking a design across the finish line — from Wix builds to client-ready
               presentation decks and case studies.</p>
             <div class="chip-row"><span class="chip">Wix</span><span class="chip">Behance</span><span
                 class="chip">Client delivery</span></div>
-=======
-            <p class="desc">Comfortable taking a design across the finish line — from Wix builds to client-ready presentation decks and case studies.</p>
-            <div class="chip-row"><span class="chip">Wix</span><span class="chip">Behance</span><span class="chip">Client delivery</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
           </div>
         </div>
       </div>
@@ -2257,19 +1739,14 @@
       <div class="section-head">
         <span class="tag reveal">// selected work</span>
         <h2 class="reveal">Case studies &amp; product design work.</h2>
-<<<<<<< HEAD
         <p class="reveal">A mix of a live academic major project, freelance case studies and independent UX
           explorations.</p>
-=======
-        <p class="reveal">A mix of a live academic major project, freelance case studies and independent UX explorations.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
       </div>
 
       <div class="projects-grid">
 
         <div class="tilt-card proj hero-proj reveal">
           <div class="tilt-card-inner">
-<<<<<<< HEAD
             <div class="proj-thumb"
               style="background:radial-gradient(circle at 30% 20%, rgba(201,168,118,0.24), transparent 60%), linear-gradient(160deg, #0d0d14, #08080b);">
               <span class="proj-status">In progress</span>
@@ -2281,39 +1758,20 @@
                 <circle cx="110" cy="60" r="3" fill="#D9BC85" opacity="0.8" />
                 <circle cx="300" cy="145" r="3" fill="#D9BC85" opacity="0.8" />
                 <circle cx="320" cy="55" r="2.5" fill="#B4924F" opacity="0.6" />
-=======
-            <div class="proj-thumb" style="background:radial-gradient(circle at 30% 20%, rgba(201,168,118,0.24), transparent 60%), linear-gradient(160deg, #0d0d14, #08080b);">
-              <span class="proj-status">In progress</span>
-              <svg class="glyph" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="200" cy="100" r="46" stroke="#D9BC85" stroke-width="1" opacity="0.6"/>
-                <circle cx="200" cy="100" r="72" stroke="#D9BC85" stroke-width="1" opacity="0.35"/>
-                <circle cx="200" cy="100" r="98" stroke="#D9BC85" stroke-width="1" opacity="0.18"/>
-                <circle cx="200" cy="100" r="5" fill="#B4924F"/>
-                <circle cx="110" cy="60" r="3" fill="#D9BC85" opacity="0.8"/>
-                <circle cx="300" cy="145" r="3" fill="#D9BC85" opacity="0.8"/>
-                <circle cx="320" cy="55" r="2.5" fill="#B4924F" opacity="0.6"/>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
               </svg>
             </div>
             <h3>AgentOS — AI Workspace Platform</h3>
             <p class="desc">Final-year major project: an AI-powered productivity workspace unifying calendar,
-<<<<<<< HEAD
               email, chat, notes, tasks and docs into one agentic interface. Leading UX research,
               information architecture, wireframing and high-fidelity screen design.</p>
             <div class="proj-tags"><span>Figma</span><span>UX Research</span><span>Design System</span><span>Interaction
                 Design</span></div>
-=======
-            email, chat, notes, tasks and docs into one agentic interface. Leading UX research,
-            information architecture, wireframing and high-fidelity screen design.</p>
-            <div class="proj-tags"><span>Figma</span><span>UX Research</span><span>Design System</span><span>Interaction Design</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
             <div class="proj-meta-row"><span class="proj-year">Major Project · 2026–27</span></div>
           </div>
         </div>
 
         <div class="tilt-card proj tall reveal" style="transition-delay:60ms">
           <div class="tilt-card-inner">
-<<<<<<< HEAD
             <div class="proj-thumb"
               style="background:linear-gradient(155deg, rgba(34,197,94,0.14), transparent 55%), #08080b;">
               <span class="proj-status">Completed</span>
@@ -2322,23 +1780,11 @@
                 <path d="M75 90 L125 90 M75 120 L110 120 M75 150 L120 150" stroke="#B4924F" stroke-width="1.2"
                   opacity="0.5" />
                 <circle cx="100" cy="200" r="12" stroke="#22C55E" stroke-width="1.2" opacity="0.7" />
-=======
-            <div class="proj-thumb" style="background:linear-gradient(155deg, rgba(34,197,94,0.14), transparent 55%), #08080b;">
-              <span class="proj-status">Completed</span>
-              <svg class="glyph" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="60" y="30" width="80" height="200" rx="16" stroke="#D9BC85" stroke-width="1.2" opacity="0.5"/>
-                <path d="M75 90 L125 90 M75 120 L110 120 M75 150 L120 150" stroke="#B4924F" stroke-width="1.2" opacity="0.5"/>
-                <circle cx="100" cy="200" r="12" stroke="#22C55E" stroke-width="1.2" opacity="0.7"/>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
               </svg>
             </div>
             <h3>Last Mile — Delivery Experience</h3>
             <p class="desc">End-to-end UX for a last-mile delivery platform: personas, empathy &amp; journey maps,
-<<<<<<< HEAD
               IA, a full design system and a 9-screen interactive case study.</p>
-=======
-            IA, a full design system and a 9-screen interactive case study.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
             <div class="proj-tags"><span>Figma</span><span>Wireframing</span><span>Usability Testing</span></div>
             <div class="proj-meta-row"><span class="proj-year">Apr – Jun 2026</span></div>
           </div>
@@ -2346,7 +1792,6 @@
 
         <div class="tilt-card proj wide reveal" style="transition-delay:120ms">
           <div class="tilt-card-inner">
-<<<<<<< HEAD
             <div class="proj-thumb"
               style="background:linear-gradient(155deg, rgba(201,168,118,0.16), transparent 60%), #08080b;">
               <span class="proj-status">Completed</span>
@@ -2356,30 +1801,17 @@
                 <rect x="190" y="30" width="170" height="70" rx="10" stroke="#EDE3CC" stroke-width="1.1"
                   opacity="0.4" />
                 <path d="M75 55 h60 M75 70 h40" stroke="#B4924F" stroke-width="1.1" opacity="0.5" />
-=======
-            <div class="proj-thumb" style="background:linear-gradient(155deg, rgba(201,168,118,0.16), transparent 60%), #08080b;">
-              <span class="proj-status">Completed</span>
-              <svg class="glyph" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="30" width="130" height="70" rx="10" stroke="#D9BC85" stroke-width="1.1" opacity="0.55"/>
-                <rect x="190" y="30" width="170" height="70" rx="10" stroke="#EDE3CC" stroke-width="1.1" opacity="0.4"/>
-                <path d="M75 55 h60 M75 70 h40" stroke="#B4924F" stroke-width="1.1" opacity="0.5"/>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
               </svg>
             </div>
             <h3>PharmaFlow — Prescription Dashboard</h3>
             <p class="desc">A pharmacy patient-profile &amp; prescription management dashboard, built out as a full
-<<<<<<< HEAD
               Figma case study with its own colour system and presentation deck.</p>
-=======
-            Figma case study with its own colour system and presentation deck.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
             <div class="proj-tags"><span>Figma</span><span>Dashboard UX</span><span>Case Study</span></div>
           </div>
         </div>
 
         <div class="tilt-card proj reg reveal" style="transition-delay:60ms">
           <div class="tilt-card-inner">
-<<<<<<< HEAD
             <div class="proj-thumb"
               style="background:linear-gradient(155deg, rgba(245,158,11,0.14), transparent 60%), #08080b;">
               <span class="proj-status">Case study</span>
@@ -2387,29 +1819,17 @@
                 <path d="M60 90 Q140 20 220 70 T360 40" stroke="#F59E0B" stroke-width="1.4" opacity="0.6" fill="none" />
                 <circle cx="60" cy="90" r="3" fill="#F59E0B" />
                 <circle cx="360" cy="40" r="3" fill="#F59E0B" />
-=======
-            <div class="proj-thumb" style="background:linear-gradient(155deg, rgba(245,158,11,0.14), transparent 60%), #08080b;">
-              <span class="proj-status">Case study</span>
-              <svg class="glyph" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M60 90 Q140 20 220 70 T360 40" stroke="#F59E0B" stroke-width="1.4" opacity="0.6" fill="none"/>
-                <circle cx="60" cy="90" r="3" fill="#F59E0B"/><circle cx="360" cy="40" r="3" fill="#F59E0B"/>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
               </svg>
             </div>
             <h3>FitStart — Fitness App</h3>
             <p class="desc">A fitness onboarding &amp; tracking app case study focused on habit formation and
-<<<<<<< HEAD
               a friendly, motivating first-run experience.</p>
-=======
-            a friendly, motivating first-run experience.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
             <div class="proj-tags"><span>UX Research</span><span>Mobile UI</span></div>
           </div>
         </div>
 
         <div class="tilt-card proj reg reveal" style="transition-delay:120ms">
           <div class="tilt-card-inner">
-<<<<<<< HEAD
             <div class="proj-thumb"
               style="background:linear-gradient(155deg, rgba(239,68,68,0.14), transparent 60%), #08080b;">
               <span class="proj-status">Case study</span>
@@ -2417,22 +1837,11 @@
                 <rect x="150" y="25" width="100" height="80" rx="14" stroke="#EF4444" stroke-width="1.2"
                   opacity="0.55" />
                 <path d="M175 55 h50 M175 72 h30" stroke="#FCA5A5" stroke-width="1.1" opacity="0.5" />
-=======
-            <div class="proj-thumb" style="background:linear-gradient(155deg, rgba(239,68,68,0.14), transparent 60%), #08080b;">
-              <span class="proj-status">Case study</span>
-              <svg class="glyph" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="150" y="25" width="100" height="80" rx="14" stroke="#EF4444" stroke-width="1.2" opacity="0.55"/>
-                <path d="M175 55 h50 M175 72 h30" stroke="#FCA5A5" stroke-width="1.1" opacity="0.5"/>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
               </svg>
             </div>
             <h3>Swiggy — UX Redesign Study</h3>
             <p class="desc">An independent teardown &amp; redesign exploration of the food-delivery ordering flow,
-<<<<<<< HEAD
               focused on reducing decision fatigue at checkout.</p>
-=======
-            focused on reducing decision fatigue at checkout.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
             <div class="proj-tags"><span>UX Audit</span><span>Prototyping</span></div>
           </div>
         </div>
@@ -2453,29 +1862,17 @@
         <div class="t-item reveal">
           <h4>Co-Author <span class="t-role">— The Role of Prototyping in Design Thinking</span></h4>
           <p>Enhancing innovation, user-centered solutions and iterative development — published
-<<<<<<< HEAD
             at the 8th International Conference on Intelligent Computing (IConIC 2025).</p>
-=======
-          at the 8th International Conference on Intelligent Computing (IConIC 2025).</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
         </div>
         <div class="t-item reveal" style="transition-delay:60ms">
           <h4>Event Director <span class="t-role">— PEC Hacks 4.0</span></h4>
           <p>Led planning and execution of a college-level hackathon, coordinating cross-functional
-<<<<<<< HEAD
             teams and managing operations end to end.</p>
-=======
-          teams and managing operations end to end.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
         </div>
         <div class="t-item reveal" style="transition-delay:120ms">
           <h4>Lens Man <span class="t-role">— Youth Red Cross Society</span></h4>
           <p>Participated in community service initiatives and college outreach activities as the
-<<<<<<< HEAD
             society's photographer.</p>
-=======
-          society's photographer.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
         </div>
       </div>
     </div>
@@ -2492,7 +1889,6 @@
         <div class="list-card reveal">
           <h3>Education</h3>
           <div class="edu-row">
-<<<<<<< HEAD
             <div class="top"><span class="name">B.Tech, Computer Science &amp; Business Systems</span><span
                 class="yr">2023 – 2027</span></div>
             <div class="sub">Panimalar Engineering College, Chennai · CGPA 7.5/10</div>
@@ -2500,19 +1896,11 @@
           <div class="edu-row">
             <div class="top"><span class="name">Higher Secondary (Matriculation)</span><span class="yr">2020 –
                 2023</span></div>
-=======
-            <div class="top"><span class="name">B.Tech, Computer Science &amp; Business Systems</span><span class="yr">2023 – 2027</span></div>
-            <div class="sub">Panimalar Engineering College, Chennai · CGPA 7.5/10</div>
-          </div>
-          <div class="edu-row">
-            <div class="top"><span class="name">Higher Secondary (Matriculation)</span><span class="yr">2020 – 2023</span></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
             <div class="sub">Madras Christian College Matriculation HSS, Chennai · Class XII: 71%</div>
           </div>
         </div>
         <div class="list-card reveal" style="transition-delay:60ms">
           <h3>Certifications</h3>
-<<<<<<< HEAD
           <div class="edu-row">
             <div class="top"><span class="name">UX/UI Mastery</span><span class="yr">6 months</span></div>
             <div class="sub">WEBD School</div>
@@ -2525,11 +1913,6 @@
             <div class="top"><span class="name">Web Development Training</span></div>
             <div class="sub">Qspider</div>
           </div>
-=======
-          <div class="edu-row"><div class="top"><span class="name">UX/UI Mastery</span><span class="yr">6 months</span></div><div class="sub">WEBD School</div></div>
-          <div class="edu-row"><div class="top"><span class="name">Design Thinking</span></div><div class="sub">NPTEL</div></div>
-          <div class="edu-row"><div class="top"><span class="name">Web Development Training</span></div><div class="sub">Qspider</div></div>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
         </div>
       </div>
     </div>
@@ -2541,12 +1924,8 @@
       <div class="contact-card reveal">
         <span class="tag" style="justify-content:center;display:flex;">// let's talk</span>
         <h2>Have a product to design, or a screen to rebuild?</h2>
-<<<<<<< HEAD
         <p class="lead">Open to internships, freelance design work, and front-end collaborations. Based in Chennai —
           happy to work remote.</p>
-=======
-        <p class="lead">Open to internships, freelance design work, and front-end collaborations. Based in Chennai — happy to work remote.</p>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
         <div class="hero-actions" style="justify-content:center;margin-top:0;">
           <a href="mailto:rohitmuralidaran@gmail.com" class="btn btn-primary">rohitmuralidaran@gmail.com</a>
         </div>
@@ -2567,7 +1946,6 @@
     </div>
   </footer>
 
-<<<<<<< HEAD
   <script>
     // Scroll reveal
     const io = new IntersectionObserver((entries) => {
@@ -2740,174 +2118,3 @@
 </body>
 
 </html>
-=======
-<script>
-  // Scroll reveal
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, {threshold:0.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-  // Hero parallax on scroll
-  const heroEl = document.getElementById('heroParallax');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function onScroll(){
-    if(reduceMotion) return;
-    const y = window.scrollY;
-    const vh = window.innerHeight;
-    const p = Math.min(y / (vh*0.9), 1);
-    heroEl.style.opacity = String(1 - p);
-    heroEl.style.transform = `translateY(${p*70}px) scale(${1 - p*0.05})`;
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-
-  // Mouse-tracking spotlight + subtle 3D tilt on cards
-  const cards = document.querySelectorAll('.tilt-card');
-  cards.forEach(card=>{
-    card.addEventListener('mousemove', (e)=>{
-      if(reduceMotion) return;
-      const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left, y = e.clientY - r.top;
-      card.style.setProperty('--mx', x+'px');
-      card.style.setProperty('--my', y+'px');
-      const rx = ((y / r.height) - 0.5) * -8;
-      const ry = ((x / r.width) - 0.5) * 8;
-      card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px) scale(1.015)`;
-    });
-    card.addEventListener('mouseleave', ()=>{
-      card.style.transform = '';
-    });
-  });
-
-  // Ambient blobs react very subtly to global mouse position (parallax depth)
-  const blobLayer = document.getElementById('blobLayer');
-  window.addEventListener('mousemove', (e)=>{
-    if(reduceMotion) return;
-    const nx = (e.clientX / window.innerWidth - 0.5);
-    const ny = (e.clientY / window.innerHeight - 0.5);
-    blobLayer.style.transform = `translate(${nx*14}px, ${ny*14}px)`;
-  }, {passive:true});
-
-  // Mobile nav toggle -> smooth scroll only (single page)
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', function(ev){
-      const id = this.getAttribute('href');
-      if(id.length>1){
-        const target = document.querySelector(id);
-        if(target){ ev.preventDefault(); target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'start'}); }
-      }
-    });
-  });
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script>
-(function(){
-  const canvas = document.getElementById('heroCanvas');
-  const wrap = document.getElementById('heroCanvasWrap');
-  if(!canvas || typeof THREE === 'undefined') return;
-  const reduceMotion3d = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-  camera.position.set(0, 0, 9);
-
-  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-  function resize(){
-    const w = wrap.clientWidth, h = wrap.clientHeight;
-    renderer.setSize(w, h, false);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-
-  // Lighting — aurora palette
-  scene.add(new THREE.AmbientLight(0x201a10, 1.3));
-  const lightPink = new THREE.PointLight(0xDFC08F, 26, 22); lightPink.position.set(4, 3, 4);
-  const lightViolet = new THREE.PointLight(0xC9A876, 22, 22); lightViolet.position.set(-4, -2, 3);
-  const lightCyan = new THREE.PointLight(0xEDE3CC, 18, 22); lightCyan.position.set(0, 4, -3);
-  scene.add(lightPink, lightViolet, lightCyan);
-
-  // Core gem
-  const group = new THREE.Group();
-  scene.add(group);
-
-  const coreGeo = new THREE.IcosahedronGeometry(2.15, 1);
-  const coreMat = new THREE.MeshStandardMaterial({
-    color: 0x8a6f42, metalness: 0.35, roughness: 0.22,
-    emissive: 0x2a1f10, emissiveIntensity: 0.35, flatShading: true
-  });
-  const core = new THREE.Mesh(coreGeo, coreMat);
-  group.add(core);
-
-  // Wireframe shell, slightly larger
-  const wireGeo = new THREE.IcosahedronGeometry(2.55, 1);
-  const wireMat = new THREE.MeshBasicMaterial({color:0xEDE3CC, wireframe:true, transparent:true, opacity:0.22});
-  const wire = new THREE.Mesh(wireGeo, wireMat);
-  group.add(wire);
-
-  // Orbiting particles
-  const particles = new THREE.Group();
-  const particleColors = [0xDFC08F, 0xC9A876, 0xEDE3CC, 0xB4924F];
-  for(let i=0;i<14;i++){
-    const s = new THREE.Mesh(
-      new THREE.SphereGeometry(0.045 + Math.random()*0.05, 10, 10),
-      new THREE.MeshBasicMaterial({color: particleColors[i % particleColors.length]})
-    );
-    const radius = 3.1 + Math.random()*1.6;
-    const theta = Math.random()*Math.PI*2;
-    const phi = Math.acos((Math.random()*2)-1);
-    s.position.set(
-      radius*Math.sin(phi)*Math.cos(theta),
-      radius*Math.sin(phi)*Math.sin(theta),
-      radius*Math.cos(phi)
-    );
-    s.userData.speed = 0.15 + Math.random()*0.25;
-    s.userData.offset = Math.random()*Math.PI*2;
-    s.userData.baseR = radius;
-    particles.add(s);
-  }
-  scene.add(particles);
-
-  let targetRotX = 0, targetRotY = 0;
-  window.addEventListener('mousemove', (e)=>{
-    const nx = (e.clientX / window.innerWidth) - 0.5;
-    const ny = (e.clientY / window.innerHeight) - 0.5;
-    targetRotY = nx * 0.9;
-    targetRotX = ny * 0.5;
-  }, {passive:true});
-
-  let scrollFactor = 0;
-  window.addEventListener('scroll', ()=>{
-    scrollFactor = Math.min(window.scrollY / window.innerHeight, 1.2);
-  }, {passive:true});
-
-  const clock = new THREE.Clock();
-  function animate(){
-    requestAnimationFrame(animate);
-    const t = clock.getElapsedTime();
-
-    if(!reduceMotion3d){
-      group.rotation.y += 0.0028;
-      group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, 0.25 + targetRotX, 0.04);
-      group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, group.rotation.y);
-      group.rotation.z = THREE.MathUtils.lerp(group.rotation.z, targetRotY*0.25, 0.04);
-      group.position.y = Math.sin(t*0.6)*0.18 - scrollFactor*0.6;
-      group.position.x = targetRotY*0.4;
-      particles.rotation.y += 0.0009;
-      particles.rotation.x += 0.0004;
-      lightPink.position.x = Math.sin(t*0.4)*4;
-      lightCyan.position.z = Math.cos(t*0.35)*4;
-    }
-    renderer.render(scene, camera);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-  animate();
-})();
-</script>
-</body>
-</html>
->>>>>>> 8d5f53589c4d03150d49bc7885bc3d2373f82ed7
