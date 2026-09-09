@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -31,7 +31,7 @@
 
     /* Nav */
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); background: rgba(8,8,11,0.72); }
-    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
     .brand { font-family: "Fraunces", serif; font-size: 18px; font-weight: 400; color: var(--fg); text-decoration: none; letter-spacing: -0.02em; }
     .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); color: #0a0a0a; font-size: 13px; font-weight: 700; margin-right: 8px; }
     .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-muted); text-decoration: none; font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; transition: color 200ms var(--ease); }
@@ -39,16 +39,16 @@
     .nav-back svg { width: 14px; height: 14px; }
 
     /* Layout */
-    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
     /* Hero */
-    .case-hero { padding: 140px 0 80px; }
+    .case-hero { padding: 120px 0 44px; }
     .case-tag { display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; }
     .case-tag::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
     .case-hero h1 { font-family: "Fraunces", serif; font-size: clamp(36px, 6vw, 64px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
     .case-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .case-hero .lead { font-size: 18px; color: var(--fg-muted); max-width: 620px; line-height: 1.75; margin-bottom: 36px; }
-    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+    .case-hero .lead { font-size: 18px; color: var(--fg-muted); max-width: 760px; line-height: 1.75; margin-bottom: 32px; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
     .meta-chip { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); min-width: 110px; }
     .meta-chip .lbl { font-size: 10.5px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; }
     .meta-chip .val { font-size: 14px; font-weight: 500; color: var(--fg); }
@@ -60,9 +60,9 @@
     .btn-secondary:hover { border-color: var(--border-accent); transform: translateY(-2px); }
 
     /* Banner */
-    .case-banner { margin: 0 0 80px; border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; background: linear-gradient(160deg, rgba(201,168,118,0.12) 0%, rgba(8,8,11,0.95) 70%); height: 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .case-banner { margin: 0 0 64px; border-radius: 20px; border: 1px solid var(--border-accent); overflow: hidden; background: #000000 !important; min-height: 380px; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(37, 99, 235, 0.1); padding: 48px 40px; }
     .case-banner svg { width: 100%; height: 100%; position: absolute; inset: 0; }
-    .case-banner .banner-label { position: relative; z-index: 1; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; }
+    .case-banner .banner-label { position: absolute; bottom: 18px; right: 22px; z-index: 3; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; background: rgba(10,10,12,0.75); padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px); }
 
     /* Sections */
     .section { padding: 64px 0; border-top: 1px solid var(--border); }
@@ -122,7 +122,7 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 720px) { .bento { grid-template-columns: 1fr 1fr; } .outcomes { grid-template-columns: 1fr 1fr; } .insight-grid { grid-template-columns: 1fr; } .cta-block { padding: 36px 24px; } .figma-block { flex-direction: column; } }
+    @media (max-width: 720px) { .nav-inner, .container { padding: 0 20px; } .bento { grid-template-columns: 1fr 1fr; } .outcomes { grid-template-columns: 1fr 1fr; } .insight-grid { grid-template-columns: 1fr; } .cta-block { padding: 36px 24px; } .figma-block { flex-direction: column; } }
     @media (max-width: 480px) { .bento { grid-template-columns: 1fr; } .outcomes { grid-template-columns: 1fr; } .process-step { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -166,60 +166,9 @@
   <!-- BANNER -->
   <div class="container">
     <div class="case-banner reveal">
-      <svg viewBox="0 0 900 360" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <!-- Grid -->
-        <line x1="0" y1="60" x2="900" y2="60" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="0" y1="120" x2="900" y2="120" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="0" y1="180" x2="900" y2="180" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="0" y1="240" x2="900" y2="240" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="0" y1="300" x2="900" y2="300" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="150" y1="0" x2="150" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="300" y1="0" x2="300" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="450" y1="0" x2="450" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="600" y1="0" x2="600" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-        <line x1="750" y1="0" x2="750" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
-
-        <!-- Delivery route path -->
-        <path d="M80 280 Q 200 100 350 180 Q 480 260 600 120 Q 720 30 820 100" stroke="#D9BC85" stroke-width="1.5" opacity="0.45" fill="none" stroke-dasharray="6 4"/>
-
-        <!-- Route pins -->
-        <circle cx="80" cy="280" r="7" fill="#B4924F" opacity="0.9"/>
-        <circle cx="80" cy="280" r="14" stroke="#B4924F" stroke-width="1" opacity="0.25"/>
-        <circle cx="350" cy="180" r="6" fill="#D9BC85" opacity="0.7"/>
-        <circle cx="350" cy="180" r="12" stroke="#D9BC85" stroke-width="1" opacity="0.2"/>
-        <circle cx="600" cy="120" r="6" fill="#D9BC85" opacity="0.7"/>
-        <circle cx="600" cy="120" r="12" stroke="#D9BC85" stroke-width="1" opacity="0.2"/>
-        <circle cx="820" cy="100" r="8" fill="#B4924F" opacity="0.9"/>
-        <circle cx="820" cy="100" r="16" stroke="#B4924F" stroke-width="1.2" opacity="0.3"/>
-
-        <!-- Mobile phone mockup -->
-        <rect x="180" y="70" width="80" height="200" rx="14" fill="rgba(201,168,118,0.06)" stroke="#D9BC85" stroke-width="0.9" opacity="0.7"/>
-        <rect x="190" y="90" width="60" height="36" rx="6" fill="rgba(201,168,118,0.1)" stroke="#D9BC85" stroke-width="0.7" opacity="0.6"/>
-        <rect x="190" y="134" width="60" height="8" rx="2" fill="#D9BC85" opacity="0.2"/>
-        <rect x="190" y="148" width="48" height="6" rx="2" fill="#D9BC85" opacity="0.14"/>
-        <rect x="190" y="162" width="54" height="6" rx="2" fill="#D9BC85" opacity="0.14"/>
-        <rect x="190" y="178" width="60" height="24" rx="5" fill="rgba(201,168,118,0.15)" stroke="#D9BC85" stroke-width="0.7" opacity="0.6"/>
-        <rect x="190" y="208" width="60" height="8" rx="2" fill="#D9BC85" opacity="0.12"/>
-        <rect x="190" y="222" width="44" height="6" rx="2" fill="#D9BC85" opacity="0.12"/>
-        <circle cx="220" cy="244" r="10" stroke="#D9BC85" stroke-width="1" opacity="0.5"/>
-        <rect x="195" y="98" width="50" height="12" rx="6" fill="rgba(201,168,118,0.25)" stroke="#B4924F" stroke-width="0.7"/>
-
-        <!-- Delivery truck -->
-        <rect x="480" y="200" width="80" height="46" rx="6" fill="rgba(201,168,118,0.07)" stroke="#D9BC85" stroke-width="0.9" opacity="0.7"/>
-        <rect x="540" y="208" width="30" height="30" rx="4" fill="rgba(201,168,118,0.05)" stroke="#D9BC85" stroke-width="0.8" opacity="0.5"/>
-        <circle cx="494" cy="250" r="8" stroke="#D9BC85" stroke-width="1" opacity="0.6"/>
-        <circle cx="550" cy="250" r="8" stroke="#D9BC85" stroke-width="1" opacity="0.6"/>
-
-        <!-- Status chips -->
-        <rect x="300" y="50" width="100" height="20" rx="10" fill="rgba(201,168,118,0.14)" stroke="#B4924F" stroke-width="0.8"/>
-        <rect x="640" y="280" width="90" height="20" rx="10" fill="rgba(201,168,118,0.1)" stroke="#D9BC85" stroke-width="0.7"/>
-
-        <!-- Accent dots -->
-        <circle cx="160" cy="160" r="3" fill="#D9BC85" opacity="0.35"/>
-        <circle cx="400" cy="300" r="3" fill="#D9BC85" opacity="0.35"/>
-        <circle cx="700" cy="200" r="3" fill="#D9BC85" opacity="0.35"/>
-        <circle cx="760" cy="300" r="2.5" fill="#B4924F" opacity="0.3"/>
-      </svg>
+      <div style="position:absolute;width:520px;height:520px;border-radius:50%;border:1px dashed rgba(37,99,235,0.18);pointer-events:none;"></div>
+      <div style="position:absolute;width:720px;height:720px;border-radius:50%;border:1px solid rgba(255,255,255,0.03);pointer-events:none;"></div>
+      <img src="lastmile-logo.png" alt="Last Mile Logo" style="position:relative;z-index:2;width:100%;max-width:540px;max-height:280px;object-fit:contain;display:block;" />
       <span class="banner-label">Figma · UX Research · Mobile App · Delivery Platform</span>
     </div>
 

@@ -881,6 +881,12 @@
     .section {
       padding: 112px 0;
       border-top: 1px solid var(--border-default);
+      scroll-margin-top: 100px;
+    }
+
+    #work {
+      padding-bottom: 140px;
+      scroll-margin-top: 100px;
     }
 
     .section-head {
@@ -1058,10 +1064,11 @@
     }
 
     .a-card .ac-num {
-      font-family: "Fraunces", serif;
+      font-family: "Inter", system-ui, sans-serif;
       font-size: 34px;
-      font-weight: 560;
+      font-weight: 700;
       letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
       line-height: 1;
       background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold));
       -webkit-background-clip: text;
@@ -1281,51 +1288,46 @@
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
-      grid-auto-rows: 200px;
+      gap: 24px;
+      margin-bottom: 24px;
     }
 
     .proj.hero-proj {
       grid-column: span 4;
-      grid-row: span 2;
+      display: flex;
     }
 
     .proj.tall {
       grid-column: span 2;
-      grid-row: span 2;
+      display: flex;
     }
 
     .proj.wide {
       grid-column: span 6;
-      grid-row: span 1;
-      min-height: 220px;
       cursor: pointer;
     }
 
     .proj.wide .tilt-card-inner {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: 380px 1fr;
       align-items: center;
-      gap: 32px;
-      padding: 28px 32px;
+      gap: 36px;
+      padding: 32px 36px;
     }
 
     .proj.wide .proj-thumb {
-      flex: 0 0 300px;
-      height: 100%;
-      min-height: 150px;
+      height: 220px;
+      min-height: 220px;
       margin-bottom: 0;
+      background: #000000;
+      border-radius: 12px;
     }
 
     .proj.wide .proj-content {
-      flex: 1;
       display: flex;
       flex-direction: column;
-    }
-
-    .proj.reg {
-      grid-column: span 3;
-      grid-row: span 1;
+      height: 100%;
+      justify-content: center;
     }
 
     .proj {
@@ -1333,20 +1335,34 @@
     }
 
     .proj-thumb {
-      flex: 1;
-      border-radius: 10px;
-      margin-bottom: 18px;
+      border-radius: 12px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
       border: 1px solid var(--border-default);
-      min-height: 70px;
+      background: #000000;
     }
 
     .proj.hero-proj .proj-thumb {
-      min-height: 150px;
+      min-height: 250px;
+    }
+
+    .proj.tall .proj-thumb {
+      min-height: 250px;
+    }
+
+    .proj-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 400ms var(--ease-expo);
+    }
+
+    .proj:hover .proj-thumb-img {
+      transform: scale(1.04);
     }
 
     .proj-status {
@@ -1392,7 +1408,8 @@
       align-items: center;
       justify-content: space-between;
       margin-top: auto;
-      padding-top: 16px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .proj-year {
@@ -1757,9 +1774,10 @@
       }
 
       .proj.wide .tilt-card-inner {
+        display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 16px;
+        gap: 20px;
         padding: 24px;
       }
 
@@ -1968,9 +1986,12 @@
         </div>
 
         <div class="a-card a-featured">
-          <div class="feat-left">
-            <div class="feat-label">MAJOR PROJECT</div>
-            <div class="feat-title">AgentOS — AI Workspace Platform</div>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <img src="agenticos-logo.jpg" alt="AgenticOS Logo" style="width:46px;height:46px;border-radius:10px;object-fit:cover;border:1px solid var(--border-accent);background:#000;box-shadow:0 4px 14px rgba(0,0,0,0.5);flex-shrink:0;" />
+            <div class="feat-left">
+              <div class="feat-label">MAJOR PROJECT</div>
+              <div class="feat-title">AgenticOS — AI Workspace Platform</div>
+            </div>
           </div>
           <div class="feat-right">
             <span class="feat-dot"></span>
@@ -2061,19 +2082,11 @@
           style="text-decoration:none;display:block;cursor:pointer;">
           <div class="tilt-card-inner">
             <div class="proj-thumb"
-              style="background:radial-gradient(circle at 30% 20%, rgba(201,168,118,0.24), transparent 60%), linear-gradient(160deg, #0d0d14, #08080b);">
+              style="background:#000000;min-height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;">
               <span class="proj-status">In progress</span>
-              <svg class="glyph" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="200" cy="100" r="46" stroke="#D9BC85" stroke-width="1" opacity="0.6" />
-                <circle cx="200" cy="100" r="72" stroke="#D9BC85" stroke-width="1" opacity="0.35" />
-                <circle cx="200" cy="100" r="98" stroke="#D9BC85" stroke-width="1" opacity="0.18" />
-                <circle cx="200" cy="100" r="5" fill="#B4924F" />
-                <circle cx="110" cy="60" r="3" fill="#D9BC85" opacity="0.8" />
-                <circle cx="300" cy="145" r="3" fill="#D9BC85" opacity="0.8" />
-                <circle cx="320" cy="55" r="2.5" fill="#B4924F" opacity="0.6" />
-              </svg>
+              <img src="agenticos-logo.jpg" alt="AgenticOS — AI Workspace Platform" class="proj-thumb-img" style="max-height:210px;max-width:320px;display:block;" />
             </div>
-            <h3>AgentOS — AI Workspace Platform</h3>
+            <h3>AgenticOS — AI Workspace Platform</h3>
             <p class="desc">Final-year major project: an AI-powered productivity workspace unifying calendar,
               email, chat, notes, tasks and docs into one agentic interface. Leading UX research,
               information architecture, wireframing and high-fidelity screen design.</p>
@@ -2090,14 +2103,9 @@
           style="transition-delay:60ms;text-decoration:none;display:block;cursor:pointer;">
           <div class="tilt-card-inner">
             <div class="proj-thumb"
-              style="background:linear-gradient(155deg, rgba(34,197,94,0.14), transparent 55%), #08080b;">
+              style="background:#000000;min-height:220px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:16px;">
               <span class="proj-status">Completed</span>
-              <svg class="glyph" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="60" y="30" width="80" height="200" rx="16" stroke="#D9BC85" stroke-width="1.2" opacity="0.5" />
-                <path d="M75 90 L125 90 M75 120 L110 120 M75 150 L120 150" stroke="#B4924F" stroke-width="1.2"
-                  opacity="0.5" />
-                <circle cx="100" cy="200" r="12" stroke="#22C55E" stroke-width="1.2" opacity="0.7" />
-              </svg>
+              <img src="lastmile-logo.png" alt="Last Mile — Delivery Experience" class="proj-thumb-img" style="max-height:200px;max-width:280px;display:block;object-fit:contain;" />
             </div>
             <h3>Last Mile — Delivery Experience</h3>
             <p class="desc">End-to-end UX for a last-mile delivery platform: personas, empathy &amp; journey maps,
@@ -2114,20 +2122,14 @@
           style="transition-delay:120ms;text-decoration:none;display:block;">
           <div class="tilt-card-inner">
             <div class="proj-thumb"
-              style="background:linear-gradient(155deg, rgba(201,168,118,0.16), transparent 60%), #08080b;">
+              style="background:#000000;min-height:180px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:24px;">
               <span class="proj-status">Completed</span>
-              <svg class="glyph" viewBox="0 0 400 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="30" width="130" height="70" rx="10" stroke="#D9BC85" stroke-width="1.1"
-                  opacity="0.55" />
-                <rect x="190" y="30" width="170" height="70" rx="10" stroke="#EDE3CC" stroke-width="1.1"
-                  opacity="0.4" />
-                <path d="M75 55 h60 M75 70 h40" stroke="#B4924F" stroke-width="1.1" opacity="0.5" />
-              </svg>
+              <img src="pharmaflow-logo.png" alt="PharmaFlow — Prescription Dashboard" class="proj-thumb-img" style="max-height:130px;max-width:320px;display:block;object-fit:contain;" />
             </div>
             <div class="proj-content">
               <h3>PharmaFlow — Prescription Dashboard</h3>
               <p class="desc">A pharmacy patient-profile &amp; prescription management dashboard, built out as a full
-                Figma case study with its own colour system and presentation deck.</p>
+              Figma case study with its own colour system and presentation deck.</p>
               <div class="proj-tags"><span>Figma</span><span>Dashboard UX</span><span>Case Study</span></div>
               <div class="proj-meta-row">
                 <span class="proj-year">Jul – Sep 2026</span>

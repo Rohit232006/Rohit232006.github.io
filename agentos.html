@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -30,27 +30,27 @@
     .bg-glow { position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; border-radius: 50%; background: radial-gradient(ellipse, rgba(201,168,118,0.07) 0%, transparent 70%); pointer-events: none; z-index: 0; }
 
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); background: rgba(8,8,11,0.72); }
-    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 0 32px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
     .brand { font-family: "Fraunces", serif; font-size: 18px; font-weight: 400; color: var(--fg); text-decoration: none; letter-spacing: -0.02em; }
     .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); color: #0a0a0a; font-size: 13px; font-weight: 700; margin-right: 8px; }
     .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-muted); text-decoration: none; font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; transition: color 200ms var(--ease); }
     .nav-back:hover { color: var(--fg); }
     .nav-back svg { width: 14px; height: 14px; }
 
-    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 
     /* Live badge */
     .live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(201,168,118,0.3); background: rgba(201,168,118,0.08); font-size: 12px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 20px; }
     .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); box-shadow: 0 0 0 0 rgba(232,201,138,0.5); animation: pulse 2s ease-out infinite; flex-shrink: 0; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(232,201,138,0.5); } 70% { box-shadow: 0 0 0 7px rgba(232,201,138,0); } 100% { box-shadow: 0 0 0 0 rgba(232,201,138,0); } }
 
-    .case-hero { padding: 140px 0 80px; }
+    .case-hero { padding: 120px 0 44px; }
     .case-tag { display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; }
     .case-tag::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
     .case-hero h1 { font-family: "Fraunces", serif; font-size: clamp(36px, 6vw, 64px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
     .case-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .case-hero .lead { font-size: 18px; color: var(--fg-muted); max-width: 640px; line-height: 1.75; margin-bottom: 36px; }
-    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+    .case-hero .lead { font-size: 18px; color: var(--fg-muted); max-width: 760px; line-height: 1.75; margin-bottom: 32px; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
     .meta-chip { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); min-width: 110px; }
     .meta-chip .lbl { font-size: 10.5px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; }
     .meta-chip .val { font-size: 14px; font-weight: 500; color: var(--fg); }
@@ -62,9 +62,9 @@
     .btn-secondary:hover { border-color: var(--border-accent); transform: translateY(-2px); }
 
     /* Banner */
-    .case-banner { margin: 0 0 80px; border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; background: radial-gradient(circle at 30% 20%, rgba(201,168,118,0.18), transparent 60%), linear-gradient(160deg, #0d0d14, #08080b); height: 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .case-banner { margin: 0 0 64px; border-radius: 20px; border: 1px solid var(--border-accent); overflow: hidden; background: #000000 !important; min-height: 380px; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(59, 130, 246, 0.1); padding: 48px 40px; }
     .case-banner svg { width: 100%; height: 100%; position: absolute; inset: 0; }
-    .case-banner .banner-label { position: relative; z-index: 1; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; }
+    .case-banner .banner-label { position: absolute; bottom: 18px; right: 22px; z-index: 3; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; background: rgba(10,10,12,0.75); padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(10px); }
 
     /* PS block — prominent */
     .ps-block { padding: 36px 40px; border-radius: var(--r); border: 1px solid var(--border-accent); background: linear-gradient(135deg, rgba(201,168,118,0.1) 0%, rgba(8,8,11,0.8) 100%); margin-bottom: 0; position: relative; overflow: hidden; }
@@ -131,7 +131,7 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 720px) { .bento { grid-template-columns: 1fr 1fr; } .work-done { grid-template-columns: 1fr; } .cta-block { padding: 36px 24px; } .ps-block { padding: 28px 24px; } }
+    @media (max-width: 720px) { .nav-inner, .container { padding: 0 20px; } .bento { grid-template-columns: 1fr 1fr; } .work-done { grid-template-columns: 1fr; } .cta-block { padding: 36px 24px; } .ps-block { padding: 28px 24px; } }
     @media (max-width: 480px) { .bento { grid-template-columns: 1fr; } .phase-item { grid-template-columns: 1fr; } .phase-dot { display: none; } }
   </style>
 </head>
@@ -154,7 +154,7 @@
     <div class="container">
       <div class="live-badge reveal"><span class="live-dot"></span>Major Project — UX in Progress · 2026–27</div>
       <div class="case-tag reveal" style="transition-delay:40ms">Case Study</div>
-      <h1 class="reveal" style="transition-delay:80ms">AgentOS — <em>AI Workspace Platform</em></h1>
+      <h1 class="reveal" style="transition-delay:80ms">AgenticOS — <em>AI Workspace Platform</em></h1>
       <p class="lead reveal" style="transition-delay:140ms">A final-year major project — an AI-powered productivity workspace that unifies calendar, email, chat, notes, tasks and docs into one agentic interface. Currently leading UX research, information architecture, wireframing and high-fidelity screen design.</p>
       <div class="meta-row reveal" style="transition-delay:200ms">
         <div class="meta-chip"><span class="lbl">Type</span><span class="val">Major Project</span></div>
@@ -173,50 +173,9 @@
   <!-- BANNER -->
   <div class="container">
     <div class="case-banner reveal">
-      <svg viewBox="0 0 900 360" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-        <!-- Grid -->
-        <line x1="0" y1="60" x2="900" y2="60" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="0" y1="120" x2="900" y2="120" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="0" y1="180" x2="900" y2="180" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="0" y1="240" x2="900" y2="240" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="0" y1="300" x2="900" y2="300" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="150" y1="0" x2="150" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="300" y1="0" x2="300" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="450" y1="0" x2="450" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="600" y1="0" x2="600" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <line x1="750" y1="0" x2="750" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
-        <!-- Orbital rings -->
-        <circle cx="450" cy="180" r="60" stroke="#D9BC85" stroke-width="1" opacity="0.5"/>
-        <circle cx="450" cy="180" r="96" stroke="#D9BC85" stroke-width="0.8" opacity="0.3"/>
-        <circle cx="450" cy="180" r="132" stroke="#D9BC85" stroke-width="0.6" opacity="0.18"/>
-        <circle cx="450" cy="180" r="168" stroke="#D9BC85" stroke-width="0.5" opacity="0.1"/>
-        <!-- Centre core -->
-        <circle cx="450" cy="180" r="10" fill="#B4924F" opacity="0.9"/>
-        <circle cx="450" cy="180" r="6" fill="#E8C98A"/>
-        <!-- Orbit satellites -->
-        <circle cx="450" cy="120" r="5" fill="#D9BC85" opacity="0.8"/>
-        <circle cx="510" cy="180" r="4" fill="#D9BC85" opacity="0.7"/>
-        <circle cx="450" cy="240" r="4" fill="#D9BC85" opacity="0.6"/>
-        <circle cx="390" cy="180" r="5" fill="#D9BC85" opacity="0.7"/>
-        <!-- Module cards floating around orbit -->
-        <rect x="158" y="80" width="90" height="40" rx="8" fill="rgba(201,168,118,0.08)" stroke="#D9BC85" stroke-width="0.8" opacity="0.7"/>
-        <rect x="164" y="90" width="40" height="6" rx="2" fill="#B4924F" opacity="0.5"/>
-        <rect x="164" y="102" width="60" height="5" rx="1.5" fill="#D9BC85" opacity="0.2"/>
-        <rect x="158" y="220" width="90" height="40" rx="8" fill="rgba(201,168,118,0.06)" stroke="#D9BC85" stroke-width="0.8" opacity="0.6"/>
-        <rect x="164" y="230" width="40" height="6" rx="2" fill="#D9BC85" opacity="0.4"/>
-        <rect x="164" y="242" width="55" height="5" rx="1.5" fill="#D9BC85" opacity="0.18"/>
-        <rect x="640" y="100" width="90" height="40" rx="8" fill="rgba(201,168,118,0.07)" stroke="#D9BC85" stroke-width="0.8" opacity="0.6"/>
-        <rect x="646" y="110" width="36" height="6" rx="2" fill="#B4924F" opacity="0.45"/>
-        <rect x="646" y="122" width="55" height="5" rx="1.5" fill="#D9BC85" opacity="0.18"/>
-        <rect x="640" y="220" width="90" height="40" rx="8" fill="rgba(201,168,118,0.06)" stroke="#D9BC85" stroke-width="0.8" opacity="0.55"/>
-        <rect x="646" y="230" width="42" height="6" rx="2" fill="#D9BC85" opacity="0.35"/>
-        <rect x="646" y="242" width="50" height="5" rx="1.5" fill="#D9BC85" opacity="0.16"/>
-        <!-- Connection lines from core to cards -->
-        <line x1="390" y1="180" x2="248" y2="100" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
-        <line x1="390" y1="180" x2="248" y2="240" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
-        <line x1="510" y1="180" x2="640" y2="120" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
-        <line x1="510" y1="180" x2="640" y2="240" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
-      </svg>
+      <div style="position:absolute;width:520px;height:520px;border-radius:50%;border:1px dashed rgba(59,130,246,0.18);pointer-events:none;"></div>
+      <div style="position:absolute;width:720px;height:720px;border-radius:50%;border:1px solid rgba(255,255,255,0.03);pointer-events:none;"></div>
+      <img src="agenticos-logo.jpg" alt="AgenticOS" style="position:relative;z-index:2;width:100%;max-width:420px;max-height:280px;object-fit:contain;display:block;" />
       <span class="banner-label">Figma · UX Research · AI Platform · Design System</span>
     </div>
 
