@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Last Mile — Delivery Experience · Rohit M</title>
+  <meta name="description" content="Last Mile is an end-to-end UX case study for a last-mile delivery platform — personas, journey maps, IA, a full design system and a 9-screen interactive prototype by Rohit M." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08080b;
+      --bg-elevated: #0f0f16;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(201, 168, 118, 0.28);
+      --accent: #c9a876;
+      --accent-bright: #e8c98a;
+      --accent-gold: #b4924f;
+      --fg: #ede3cc;
+      --fg-muted: rgba(237, 227, 204, 0.5);
+      --fg-subtle: rgba(237, 227, 204, 0.3);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --r: 18px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: "Outfit", sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,118,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,118,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .bg-glow { position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; border-radius: 50%; background: radial-gradient(ellipse, rgba(201,168,118,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+
+    /* Nav */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); background: rgba(8,8,11,0.72); }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-family: "Fraunces", serif; font-size: 18px; font-weight: 400; color: var(--fg); text-decoration: none; letter-spacing: -0.02em; }
+    .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); color: #0a0a0a; font-size: 13px; font-weight: 700; margin-right: 8px; }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-muted); text-decoration: none; font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; transition: color 200ms var(--ease); }
+    .nav-back:hover { color: var(--fg); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    /* Layout */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    /* Hero */
+    .case-hero { padding: 140px 0 80px; }
+    .case-tag { display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; }
+    .case-tag::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+    .case-hero h1 { font-family: "Fraunces", serif; font-size: clamp(36px, 6vw, 64px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+    .case-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .case-hero .lead { font-size: 18px; color: var(--fg-muted); max-width: 620px; line-height: 1.75; margin-bottom: 36px; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+    .meta-chip { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); min-width: 110px; }
+    .meta-chip .lbl { font-size: 10.5px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; }
+    .meta-chip .val { font-size: 14px; font-weight: 500; color: var(--fg); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 200ms var(--ease); cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); color: #0a0a0a; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--fg); }
+    .btn-secondary:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+
+    /* Banner */
+    .case-banner { margin: 0 0 80px; border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; background: linear-gradient(160deg, rgba(201,168,118,0.12) 0%, rgba(8,8,11,0.95) 70%); height: 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .case-banner svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+    .case-banner .banner-label { position: relative; z-index: 1; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; }
+
+    /* Sections */
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-tag { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .section h2 { font-family: "Fraunces", serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 400; letter-spacing: -0.025em; margin-bottom: 20px; line-height: 1.2; }
+    .section p { color: var(--fg-muted); line-height: 1.85; margin-bottom: 16px; max-width: 700px; }
+    .section p:last-child { margin-bottom: 0; }
+    .section p strong { color: var(--fg); font-weight: 500; }
+
+    /* Bento */
+    .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+    .bento-card { padding: 24px 20px; border-radius: var(--r); border: 1px solid var(--border); background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); transition: border-color 220ms var(--ease), transform 220ms var(--ease); }
+    .bento-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
+    .bento-card .icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(201,168,118,0.1); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 14px; }
+    .bento-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .bento-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; margin: 0; max-width: 100%; }
+
+    /* Insight grid */
+    .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+    .insight-card { padding: 22px 20px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+    .insight-card .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .insight-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .insight-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; margin: 0; max-width: 100%; }
+
+    /* Process */
+    .process { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+    .process-step { display: grid; grid-template-columns: 48px 1fr; gap: 20px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .process-step:first-child { padding-top: 0; }
+    .process-step:last-child { border-bottom: none; }
+    .step-num { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-family: "Fraunces", serif; font-size: 18px; font-weight: 400; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; flex-shrink: 0; border: 1px solid var(--border-accent); }
+    .step-body h4 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .step-body p { font-size: 14px; color: var(--fg-muted); line-height: 1.7; margin: 0; max-width: 100%; }
+
+    /* Tag list */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .tag-list span { padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); font-size: 12.5px; color: var(--fg-muted); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+
+    /* Outcomes */
+    .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+    .outcome-card { padding: 26px 22px; border-radius: var(--r); border: 1px solid var(--border-accent); background: linear-gradient(135deg, rgba(201,168,118,0.08), rgba(8,8,11,0.6)); }
+    .outcome-card .num { font-family: "Fraunces", serif; font-size: 38px; font-weight: 400; letter-spacing: -0.04em; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; margin-bottom: 8px; }
+    .outcome-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .outcome-card p { font-size: 13px; color: var(--fg-muted); margin: 0; max-width: 100%; line-height: 1.5; }
+
+    /* Figma block */
+    .figma-block { margin-top: 60px; padding: 40px 36px; border-radius: var(--r); border: 1px solid var(--border-accent); background: linear-gradient(135deg, rgba(201,168,118,0.08) 0%, rgba(8,8,11,0.95) 80%); display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+    .figma-block .figma-copy h3 { font-family: "Fraunces", serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+    .figma-block .figma-copy p { font-size: 14px; color: var(--fg-muted); margin: 0; max-width: 420px; }
+
+    /* CTA */
+    .cta-block { margin: 80px 0 60px; padding: 60px 48px; border-radius: var(--r); border: 1px solid var(--border-accent); background: linear-gradient(135deg, rgba(201,168,118,0.1) 0%, rgba(8,8,11,0.95) 80%); text-align: center; }
+    .cta-block h2 { font-family: "Fraunces", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 400; letter-spacing: -0.025em; margin-bottom: 16px; }
+    .cta-block p { color: var(--fg-muted); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-block .hero-actions { justify-content: center; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px; text-align: center; font-size: 12.5px; color: var(--fg-subtle); font-family: "JetBrains Mono", monospace; position: relative; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) { .bento { grid-template-columns: 1fr 1fr; } .outcomes { grid-template-columns: 1fr 1fr; } .insight-grid { grid-template-columns: 1fr; } .cta-block { padding: 36px 24px; } .figma-block { flex-direction: column; } }
+    @media (max-width: 480px) { .bento { grid-template-columns: 1fr; } .outcomes { grid-template-columns: 1fr; } .process-step { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="brand-mark">R</span>Rohit M</a>
+      <a href="index.html#work" class="nav-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 12L6 8l4-4"/></svg>
+        Back to Work
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="case-hero">
+    <div class="container">
+      <div class="case-tag reveal">Case Study</div>
+      <h1 class="reveal" style="transition-delay:60ms">Last Mile — <em>Delivery Experience</em></h1>
+      <p class="lead reveal" style="transition-delay:120ms">End-to-end UX for a last-mile delivery platform — from personas and empathy maps through to a full design system and a 9-screen interactive prototype built in Figma.</p>
+      <div class="meta-row reveal" style="transition-delay:180ms">
+        <div class="meta-chip"><span class="lbl">Type</span><span class="val">UX Case Study</span></div>
+        <div class="meta-chip"><span class="lbl">Tool</span><span class="val">Figma</span></div>
+        <div class="meta-chip"><span class="lbl">Duration</span><span class="val">Apr – Jun 2026</span></div>
+        <div class="meta-chip"><span class="lbl">Role</span><span class="val">UX / UI Designer</span></div>
+        <div class="meta-chip"><span class="lbl">Screens</span><span class="val">9 Hi-Fi</span></div>
+      </div>
+      <div class="hero-actions reveal" style="transition-delay:240ms">
+        <a href="https://www.figma.com/design/gvgSVnak9q9XcGM2A1CIIz/Last-Mile?m=auto&t=Dc0UYRtjHYPM7zkv-6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Open in Figma
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+        </a>
+        <a href="index.html#work" class="btn btn-secondary">Back to Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="container">
+    <div class="case-banner reveal">
+      <svg viewBox="0 0 900 360" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Grid -->
+        <line x1="0" y1="60" x2="900" y2="60" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="0" y1="120" x2="900" y2="120" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="0" y1="180" x2="900" y2="180" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="0" y1="240" x2="900" y2="240" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="150" y1="0" x2="150" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="300" y1="0" x2="300" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="450" y1="0" x2="450" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="600" y1="0" x2="600" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+        <line x1="750" y1="0" x2="750" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.08"/>
+
+        <!-- Delivery route path -->
+        <path d="M80 280 Q 200 100 350 180 Q 480 260 600 120 Q 720 30 820 100" stroke="#D9BC85" stroke-width="1.5" opacity="0.45" fill="none" stroke-dasharray="6 4"/>
+
+        <!-- Route pins -->
+        <circle cx="80" cy="280" r="7" fill="#B4924F" opacity="0.9"/>
+        <circle cx="80" cy="280" r="14" stroke="#B4924F" stroke-width="1" opacity="0.25"/>
+        <circle cx="350" cy="180" r="6" fill="#D9BC85" opacity="0.7"/>
+        <circle cx="350" cy="180" r="12" stroke="#D9BC85" stroke-width="1" opacity="0.2"/>
+        <circle cx="600" cy="120" r="6" fill="#D9BC85" opacity="0.7"/>
+        <circle cx="600" cy="120" r="12" stroke="#D9BC85" stroke-width="1" opacity="0.2"/>
+        <circle cx="820" cy="100" r="8" fill="#B4924F" opacity="0.9"/>
+        <circle cx="820" cy="100" r="16" stroke="#B4924F" stroke-width="1.2" opacity="0.3"/>
+
+        <!-- Mobile phone mockup -->
+        <rect x="180" y="70" width="80" height="200" rx="14" fill="rgba(201,168,118,0.06)" stroke="#D9BC85" stroke-width="0.9" opacity="0.7"/>
+        <rect x="190" y="90" width="60" height="36" rx="6" fill="rgba(201,168,118,0.1)" stroke="#D9BC85" stroke-width="0.7" opacity="0.6"/>
+        <rect x="190" y="134" width="60" height="8" rx="2" fill="#D9BC85" opacity="0.2"/>
+        <rect x="190" y="148" width="48" height="6" rx="2" fill="#D9BC85" opacity="0.14"/>
+        <rect x="190" y="162" width="54" height="6" rx="2" fill="#D9BC85" opacity="0.14"/>
+        <rect x="190" y="178" width="60" height="24" rx="5" fill="rgba(201,168,118,0.15)" stroke="#D9BC85" stroke-width="0.7" opacity="0.6"/>
+        <rect x="190" y="208" width="60" height="8" rx="2" fill="#D9BC85" opacity="0.12"/>
+        <rect x="190" y="222" width="44" height="6" rx="2" fill="#D9BC85" opacity="0.12"/>
+        <circle cx="220" cy="244" r="10" stroke="#D9BC85" stroke-width="1" opacity="0.5"/>
+        <rect x="195" y="98" width="50" height="12" rx="6" fill="rgba(201,168,118,0.25)" stroke="#B4924F" stroke-width="0.7"/>
+
+        <!-- Delivery truck -->
+        <rect x="480" y="200" width="80" height="46" rx="6" fill="rgba(201,168,118,0.07)" stroke="#D9BC85" stroke-width="0.9" opacity="0.7"/>
+        <rect x="540" y="208" width="30" height="30" rx="4" fill="rgba(201,168,118,0.05)" stroke="#D9BC85" stroke-width="0.8" opacity="0.5"/>
+        <circle cx="494" cy="250" r="8" stroke="#D9BC85" stroke-width="1" opacity="0.6"/>
+        <circle cx="550" cy="250" r="8" stroke="#D9BC85" stroke-width="1" opacity="0.6"/>
+
+        <!-- Status chips -->
+        <rect x="300" y="50" width="100" height="20" rx="10" fill="rgba(201,168,118,0.14)" stroke="#B4924F" stroke-width="0.8"/>
+        <rect x="640" y="280" width="90" height="20" rx="10" fill="rgba(201,168,118,0.1)" stroke="#D9BC85" stroke-width="0.7"/>
+
+        <!-- Accent dots -->
+        <circle cx="160" cy="160" r="3" fill="#D9BC85" opacity="0.35"/>
+        <circle cx="400" cy="300" r="3" fill="#D9BC85" opacity="0.35"/>
+        <circle cx="700" cy="200" r="3" fill="#D9BC85" opacity="0.35"/>
+        <circle cx="760" cy="300" r="2.5" fill="#B4924F" opacity="0.3"/>
+      </svg>
+      <span class="banner-label">Figma · UX Research · Mobile App · Delivery Platform</span>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+      <div class="section-tag reveal">// overview</div>
+      <h2 class="reveal">The problem and the brief</h2>
+      <p class="reveal" style="transition-delay:60ms"><strong>Last Mile</strong> tackled one of the most friction-heavy segments in logistics — the final delivery leg between a distribution hub and the customer. Delivery partners struggled with unclear route information, no real-time status updates and a confusing re-delivery flow, while customers had limited visibility once a package was out for delivery.</p>
+      <p class="reveal" style="transition-delay:80ms">The brief was to design a <strong>mobile-first UX</strong> that served two user groups — the delivery partner (rider app) and the end customer (tracking app) — with a shared design system underlying both surfaces.</p>
+      <div class="bento reveal" style="transition-delay:100ms">
+        <div class="bento-card"><div class="icon">◈</div><h4>Rider App</h4><p>Route optimisation, stop-by-stop delivery flow and real-time status updates for delivery partners on the ground.</p></div>
+        <div class="bento-card"><div class="icon">◆</div><h4>Customer Tracking</h4><p>Live package tracking, ETA visibility, one-tap re-delivery scheduling and delivery preference management.</p></div>
+        <div class="bento-card"><div class="icon">✦</div><h4>Design System</h4><p>Shared component library and token system keeping both surfaces visually consistent and handoff-ready.</p></div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="section">
+      <div class="section-tag reveal">// research</div>
+      <h2 class="reveal">Understanding both sides of delivery</h2>
+      <p class="reveal" style="transition-delay:40ms">I ran empathy mapping sessions across two personas — the delivery rider dealing with dense urban routes and the busy customer who misses packages. The research surfaced four recurring pain points:</p>
+      <div class="insight-grid reveal" style="transition-delay:80ms">
+        <div class="insight-card"><div class="tag">Pain point 01</div><h4>No route context</h4><p>Riders received only an address list with no visual route or priority sequence, causing backtracking and missed delivery windows.</p></div>
+        <div class="insight-card"><div class="tag">Pain point 02</div><h4>Poor re-delivery UX</h4><p>Customers had to call a hotline or navigate a 7-step web form to reschedule. High drop-off rates on this flow.</p></div>
+        <div class="insight-card"><div class="tag">Pain point 03</div><h4>Status anxiety</h4><p>"Out for delivery" was the last status customers saw for hours, creating trust issues and inbound support calls.</p></div>
+        <div class="insight-card"><div class="tag">Pain point 04</div><h4>Proof-of-delivery friction</h4><p>Riders had to open a separate camera app, upload manually and confirm in another screen — 4 actions to close one delivery.</p></div>
+      </div>
+    </section>
+
+    <!-- ROLE -->
+    <section class="section">
+      <div class="section-tag reveal">// my role</div>
+      <h2 class="reveal">What I owned</h2>
+      <p class="reveal" style="transition-delay:40ms">End-to-end solo case study — research through high-fidelity Figma prototype across both the rider and customer surfaces.</p>
+      <div class="tag-list reveal" style="transition-delay:80ms">
+        <span>Persona Development</span><span>Empathy Mapping</span><span>Journey Maps</span><span>Information Architecture</span><span>Wireframing</span><span>Usability Testing</span><span>Design System</span><span>Interaction Design</span><span>Hi-Fi Prototype (9 screens)</span>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section">
+      <div class="section-tag reveal">// process</div>
+      <h2 class="reveal">How I approached it</h2>
+      <div class="process">
+        <div class="process-step reveal"><div class="step-num">01</div><div class="step-body"><h4>Persona and Empathy Research</h4><p>Built two primary personas — the delivery rider (26, Chennai suburbs, 40+ drops/day) and the working professional who frequently misses packages. Ran empathy mapping to surface emotional states at each touchpoint, then affinity-mapped findings into four core pain categories.</p></div></div>
+        <div class="process-step reveal" style="transition-delay:40ms"><div class="step-num">02</div><div class="step-body"><h4>Journey Mapping</h4><p>Created end-to-end journey maps for both personas — from dispatch notification to confirmed delivery — annotating friction points, emotional highs and lows, and opportunity areas at each stage. This directly shaped which screens to prioritise in the prototype.</p></div></div>
+        <div class="process-step reveal" style="transition-delay:80ms"><div class="step-num">03</div><div class="step-body"><h4>Information Architecture</h4><p>Defined the IA for both apps separately, then identified the shared content model — shipment object, status taxonomy, address model — that would serve as the backbone of both surfaces and the design system tokens.</p></div></div>
+        <div class="process-step reveal" style="transition-delay:120ms"><div class="step-num">04</div><div class="step-body"><h4>Wireframing and Usability Testing</h4><p>Built low-fidelity wireframes in Figma for the nine core screens, ran two rounds of usability testing with peers, and iterated on the re-delivery scheduling flow and proof-of-delivery camera integration based on feedback.</p></div></div>
+        <div class="process-step reveal" style="transition-delay:160ms"><div class="step-num">05</div><div class="step-body"><h4>Design System and High-Fidelity Prototype</h4><p>Assembled a shared design system with colour tokens, spacing scale, typography, status-state components and a custom map/route visualisation pattern. Applied across all nine screens and connected into a fully navigable Figma prototype.</p></div></div>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section class="section">
+      <div class="section-tag reveal">// outcomes</div>
+      <h2 class="reveal">Deliverables and results</h2>
+      <p class="reveal" style="transition-delay:40ms">A complete, interactive Figma prototype covering both rider and customer surfaces with a documented design system.</p>
+      <div class="outcomes reveal" style="transition-delay:80ms">
+        <div class="outcome-card"><div class="num">9</div><h4>Hi-Fi Screens</h4><p>Rider app and customer tracking app, fully interactive prototype.</p></div>
+        <div class="outcome-card"><div class="num">2</div><h4>Personas</h4><p>Rider and customer, with empathy maps and full journey documentation.</p></div>
+        <div class="outcome-card"><div class="num">1</div><h4>Design System</h4><p>Shared token library, components and status-state patterns across both apps.</p></div>
+      </div>
+    </section>
+
+    <!-- FIGMA LINK -->
+    <div class="figma-block reveal">
+      <div class="figma-copy">
+        <h3>Explore the live Figma file</h3>
+        <p>The full prototype — wireframes, design system, all 9 hi-fi screens and the interactive delivery flow — is open in Figma.</p>
+      </div>
+      <a href="https://www.figma.com/design/gvgSVnak9q9XcGM2A1CIIz/Last-Mile?m=auto&t=Dc0UYRtjHYPM7zkv-6" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        Open in Figma
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
+      </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block reveal">
+      <h2>Want to see more?</h2>
+      <p>Check out my other case studies or get in touch for freelance design and front-end work.</p>
+      <div class="hero-actions">
+        <a href="index.html#work" class="btn btn-primary">All Projects</a>
+        <a href="index.html#contact" class="btn btn-secondary">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>2026 Rohit M - Chennai, India</footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

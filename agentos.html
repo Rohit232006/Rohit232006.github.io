@@ -1,0 +1,344 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentOS — AI Workspace Platform · Rohit M</title>
+  <meta name="description" content="AgentOS is a final-year major project — an AI-powered productivity workspace unifying calendar, email, tasks, notes and docs into one agentic interface. UX case study by Rohit M." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08080b;
+      --bg-elevated: #0f0f16;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(201, 168, 118, 0.28);
+      --accent: #c9a876;
+      --accent-bright: #e8c98a;
+      --accent-gold: #b4924f;
+      --fg: #ede3cc;
+      --fg-muted: rgba(237, 227, 204, 0.5);
+      --fg-subtle: rgba(237, 227, 204, 0.3);
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --r: 18px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--fg); font-family: "Outfit", sans-serif; font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(201,168,118,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,118,0.04) 1px, transparent 1px); background-size: 60px 60px; }
+    .bg-glow { position: fixed; top: -20%; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; border-radius: 50%; background: radial-gradient(ellipse, rgba(201,168,118,0.07) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); background: rgba(8,8,11,0.72); }
+    .nav-inner { max-width: 1160px; margin: 0 auto; padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-family: "Fraunces", serif; font-size: 18px; font-weight: 400; color: var(--fg); text-decoration: none; letter-spacing: -0.02em; }
+    .brand-mark { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); color: #0a0a0a; font-size: 13px; font-weight: 700; margin-right: 8px; }
+    .nav-back { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-muted); text-decoration: none; font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; transition: color 200ms var(--ease); }
+    .nav-back:hover { color: var(--fg); }
+    .nav-back svg { width: 14px; height: 14px; }
+
+    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    /* Live badge */
+    .live-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(201,168,118,0.3); background: rgba(201,168,118,0.08); font-size: 12px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 20px; }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-bright); box-shadow: 0 0 0 0 rgba(232,201,138,0.5); animation: pulse 2s ease-out infinite; flex-shrink: 0; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(232,201,138,0.5); } 70% { box-shadow: 0 0 0 7px rgba(232,201,138,0); } 100% { box-shadow: 0 0 0 0 rgba(232,201,138,0); } }
+
+    .case-hero { padding: 140px 0 80px; }
+    .case-tag { display: inline-flex; align-items: center; gap: 8px; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 24px; }
+    .case-tag::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+    .case-hero h1 { font-family: "Fraunces", serif; font-size: clamp(36px, 6vw, 64px); font-weight: 400; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+    .case-hero h1 em { font-style: italic; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .case-hero .lead { font-size: 18px; color: var(--fg-muted); max-width: 640px; line-height: 1.75; margin-bottom: 36px; }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+    .meta-chip { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); min-width: 110px; }
+    .meta-chip .lbl { font-size: 10.5px; color: var(--fg-subtle); letter-spacing: 0.06em; text-transform: uppercase; }
+    .meta-chip .val { font-size: 14px; font-weight: 500; color: var(--fg); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 12px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 200ms var(--ease); cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); color: #0a0a0a; }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-secondary { background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--fg); }
+    .btn-secondary:hover { border-color: var(--border-accent); transform: translateY(-2px); }
+
+    /* Banner */
+    .case-banner { margin: 0 0 80px; border-radius: var(--r); border: 1px solid var(--border); overflow: hidden; background: radial-gradient(circle at 30% 20%, rgba(201,168,118,0.18), transparent 60%), linear-gradient(160deg, #0d0d14, #08080b); height: 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .case-banner svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+    .case-banner .banner-label { position: relative; z-index: 1; font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; }
+
+    /* PS block — prominent */
+    .ps-block { padding: 36px 40px; border-radius: var(--r); border: 1px solid var(--border-accent); background: linear-gradient(135deg, rgba(201,168,118,0.1) 0%, rgba(8,8,11,0.8) 100%); margin-bottom: 0; position: relative; overflow: hidden; }
+    .ps-block::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(300px circle at 20% 50%, rgba(201,168,118,0.1), transparent 70%); pointer-events: none; }
+    .ps-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.14em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .ps-label::before { content: ""; width: 20px; height: 1px; background: var(--accent); }
+    .ps-block blockquote { font-family: "Fraunces", serif; font-size: clamp(18px, 2.5vw, 24px); font-weight: 300; font-style: italic; line-height: 1.55; color: var(--fg); letter-spacing: -0.01em; position: relative; z-index: 1; }
+    .ps-block blockquote strong { font-style: normal; font-weight: 600; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Progress tracker */
+    .progress-track { margin-top: 32px; }
+    .progress-track h4 { font-size: 13px; font-family: "JetBrains Mono", monospace; letter-spacing: 0.06em; color: var(--fg-muted); text-transform: uppercase; margin-bottom: 16px; }
+    .phase-list { display: flex; flex-direction: column; gap: 0; }
+    .phase-item { display: grid; grid-template-columns: 24px 1fr; gap: 16px; align-items: start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .phase-item:last-child { border-bottom: none; }
+    .phase-dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0; }
+    .phase-dot.done { background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); border-color: transparent; }
+    .phase-dot.done::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #0a0a0a; }
+    .phase-dot.active { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(201,168,118,0.2); }
+    .phase-dot.active::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-bright); animation: pulse 2s ease-out infinite; }
+    .phase-dot.pending { border-color: rgba(255,255,255,0.12); }
+    .phase-body { padding-bottom: 2px; }
+    .phase-body h5 { font-size: 14px; font-weight: 600; margin-bottom: 3px; display: flex; align-items: center; gap: 10px; }
+    .phase-body h5 .status-tag { font-size: 10px; font-family: "JetBrains Mono", monospace; padding: 2px 8px; border-radius: 100px; letter-spacing: 0.06em; }
+    .status-done { background: rgba(201,168,118,0.15); color: var(--accent); }
+    .status-active { background: rgba(232,201,138,0.12); color: var(--accent-bright); border: 1px solid rgba(201,168,118,0.3); }
+    .status-pending { background: rgba(255,255,255,0.04); color: var(--fg-subtle); }
+    .phase-body p { font-size: 13px; color: var(--fg-muted); line-height: 1.65; margin: 0; }
+
+    /* Sections */
+    .section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-tag { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+    .section h2 { font-family: "Fraunces", serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 400; letter-spacing: -0.025em; margin-bottom: 20px; line-height: 1.2; }
+    .section p { color: var(--fg-muted); line-height: 1.85; margin-bottom: 16px; max-width: 700px; }
+    .section p:last-child { margin-bottom: 0; }
+    .section p strong { color: var(--fg); font-weight: 500; }
+
+    /* Bento */
+    .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+    .bento-card { padding: 24px 20px; border-radius: var(--r); border: 1px solid var(--border); background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015)); transition: border-color 220ms var(--ease), transform 220ms var(--ease); }
+    .bento-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
+    .bento-card .icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(201,168,118,0.1); border: 1px solid var(--border-accent); display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 14px; }
+    .bento-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .bento-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; margin: 0; max-width: 100%; }
+
+    /* UX work done */
+    .work-done { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+    .work-card { padding: 22px 20px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+    .work-card .wc-label { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .work-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .work-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; margin: 0; max-width: 100%; }
+
+    /* Tag list */
+    .tag-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .tag-list span { padding: 6px 14px; border-radius: 100px; border: 1px solid var(--border); font-size: 12.5px; color: var(--fg-muted); font-family: "JetBrains Mono", monospace; letter-spacing: 0.04em; }
+
+    /* CTA */
+    .cta-block { margin: 80px 0 60px; padding: 60px 48px; border-radius: var(--r); border: 1px solid var(--border-accent); background: linear-gradient(135deg, rgba(201,168,118,0.1) 0%, rgba(8,8,11,0.95) 80%); text-align: center; }
+    .cta-block h2 { font-family: "Fraunces", serif; font-size: clamp(24px, 3vw, 32px); font-weight: 400; letter-spacing: -0.025em; margin-bottom: 16px; }
+    .cta-block p { color: var(--fg-muted); margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-block .hero-actions { justify-content: center; }
+
+    footer { border-top: 1px solid var(--border); padding: 28px; text-align: center; font-size: 12.5px; color: var(--fg-subtle); font-family: "JetBrains Mono", monospace; position: relative; z-index: 1; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 500ms var(--ease), transform 500ms var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 720px) { .bento { grid-template-columns: 1fr 1fr; } .work-done { grid-template-columns: 1fr; } .cta-block { padding: 36px 24px; } .ps-block { padding: 28px 24px; } }
+    @media (max-width: 480px) { .bento { grid-template-columns: 1fr; } .phase-item { grid-template-columns: 1fr; } .phase-dot { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand"><span class="brand-mark">R</span>Rohit M</a>
+      <a href="index.html#work" class="nav-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 12L6 8l4-4"/></svg>
+        Back to Work
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="case-hero">
+    <div class="container">
+      <div class="live-badge reveal"><span class="live-dot"></span>Major Project — UX in Progress · 2026–27</div>
+      <div class="case-tag reveal" style="transition-delay:40ms">Case Study</div>
+      <h1 class="reveal" style="transition-delay:80ms">AgentOS — <em>AI Workspace Platform</em></h1>
+      <p class="lead reveal" style="transition-delay:140ms">A final-year major project — an AI-powered productivity workspace that unifies calendar, email, chat, notes, tasks and docs into one agentic interface. Currently leading UX research, information architecture, wireframing and high-fidelity screen design.</p>
+      <div class="meta-row reveal" style="transition-delay:200ms">
+        <div class="meta-chip"><span class="lbl">Type</span><span class="val">Major Project</span></div>
+        <div class="meta-chip"><span class="lbl">Tool</span><span class="val">Figma</span></div>
+        <div class="meta-chip"><span class="lbl">Duration</span><span class="val">2026 – 2027</span></div>
+        <div class="meta-chip"><span class="lbl">Role</span><span class="val">UX Lead</span></div>
+        <div class="meta-chip"><span class="lbl">Status</span><span class="val">In Progress</span></div>
+      </div>
+      <div class="hero-actions reveal" style="transition-delay:260ms">
+        <a href="index.html#contact" class="btn btn-primary">Get in touch</a>
+        <a href="index.html#work" class="btn btn-secondary">Back to Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <div class="container">
+    <div class="case-banner reveal">
+      <svg viewBox="0 0 900 360" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Grid -->
+        <line x1="0" y1="60" x2="900" y2="60" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="0" y1="120" x2="900" y2="120" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="0" y1="180" x2="900" y2="180" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="0" y1="240" x2="900" y2="240" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="0" y1="300" x2="900" y2="300" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="150" y1="0" x2="150" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="300" y1="0" x2="300" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="450" y1="0" x2="450" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="600" y1="0" x2="600" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <line x1="750" y1="0" x2="750" y2="360" stroke="#D9BC85" stroke-width="0.5" opacity="0.07"/>
+        <!-- Orbital rings -->
+        <circle cx="450" cy="180" r="60" stroke="#D9BC85" stroke-width="1" opacity="0.5"/>
+        <circle cx="450" cy="180" r="96" stroke="#D9BC85" stroke-width="0.8" opacity="0.3"/>
+        <circle cx="450" cy="180" r="132" stroke="#D9BC85" stroke-width="0.6" opacity="0.18"/>
+        <circle cx="450" cy="180" r="168" stroke="#D9BC85" stroke-width="0.5" opacity="0.1"/>
+        <!-- Centre core -->
+        <circle cx="450" cy="180" r="10" fill="#B4924F" opacity="0.9"/>
+        <circle cx="450" cy="180" r="6" fill="#E8C98A"/>
+        <!-- Orbit satellites -->
+        <circle cx="450" cy="120" r="5" fill="#D9BC85" opacity="0.8"/>
+        <circle cx="510" cy="180" r="4" fill="#D9BC85" opacity="0.7"/>
+        <circle cx="450" cy="240" r="4" fill="#D9BC85" opacity="0.6"/>
+        <circle cx="390" cy="180" r="5" fill="#D9BC85" opacity="0.7"/>
+        <!-- Module cards floating around orbit -->
+        <rect x="158" y="80" width="90" height="40" rx="8" fill="rgba(201,168,118,0.08)" stroke="#D9BC85" stroke-width="0.8" opacity="0.7"/>
+        <rect x="164" y="90" width="40" height="6" rx="2" fill="#B4924F" opacity="0.5"/>
+        <rect x="164" y="102" width="60" height="5" rx="1.5" fill="#D9BC85" opacity="0.2"/>
+        <rect x="158" y="220" width="90" height="40" rx="8" fill="rgba(201,168,118,0.06)" stroke="#D9BC85" stroke-width="0.8" opacity="0.6"/>
+        <rect x="164" y="230" width="40" height="6" rx="2" fill="#D9BC85" opacity="0.4"/>
+        <rect x="164" y="242" width="55" height="5" rx="1.5" fill="#D9BC85" opacity="0.18"/>
+        <rect x="640" y="100" width="90" height="40" rx="8" fill="rgba(201,168,118,0.07)" stroke="#D9BC85" stroke-width="0.8" opacity="0.6"/>
+        <rect x="646" y="110" width="36" height="6" rx="2" fill="#B4924F" opacity="0.45"/>
+        <rect x="646" y="122" width="55" height="5" rx="1.5" fill="#D9BC85" opacity="0.18"/>
+        <rect x="640" y="220" width="90" height="40" rx="8" fill="rgba(201,168,118,0.06)" stroke="#D9BC85" stroke-width="0.8" opacity="0.55"/>
+        <rect x="646" y="230" width="42" height="6" rx="2" fill="#D9BC85" opacity="0.35"/>
+        <rect x="646" y="242" width="50" height="5" rx="1.5" fill="#D9BC85" opacity="0.16"/>
+        <!-- Connection lines from core to cards -->
+        <line x1="390" y1="180" x2="248" y2="100" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
+        <line x1="390" y1="180" x2="248" y2="240" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
+        <line x1="510" y1="180" x2="640" y2="120" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
+        <line x1="510" y1="180" x2="640" y2="240" stroke="#D9BC85" stroke-width="0.6" opacity="0.2" stroke-dasharray="4 4"/>
+      </svg>
+      <span class="banner-label">Figma · UX Research · AI Platform · Design System</span>
+    </div>
+
+    <!-- PROBLEM STATEMENT -->
+    <section class="section">
+      <div class="section-tag reveal">// problem statement</div>
+      <div class="ps-block reveal" style="transition-delay:60ms">
+        <div class="ps-label">PS</div>
+        <blockquote>
+          Knowledge workers today context-switch between <strong>5–9 disconnected tools</strong> — calendar, email, notes, chat, tasks and docs — losing an average of <strong>23 minutes per interruption</strong> to re-orientation. AgentOS asks: what if a single, <strong>AI-aware workspace</strong> could handle intent, not just input?
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+      <div class="section-tag reveal">// overview</div>
+      <h2 class="reveal">What is AgentOS?</h2>
+      <p class="reveal" style="transition-delay:60ms">AgentOS is a <strong>final-year B.Tech major project</strong> — an AI-powered productivity workspace that consolidates the core surfaces of knowledge work into one agentic interface. Rather than building a better to-do app, the goal is to rethink how a workspace responds to <em>intent</em> — understanding what you are trying to accomplish and surfacing the right tool, context or action without you having to explicitly navigate to it.</p>
+      <p class="reveal" style="transition-delay:80ms">My role is leading the <strong>entire UX layer</strong> — from initial research and competitive analysis through to information architecture, wireframing and high-fidelity screen design in Figma.</p>
+      <div class="bento reveal" style="transition-delay:100ms">
+        <div class="bento-card"><div class="icon">◆</div><h4>Unified Surface</h4><p>Calendar, email, notes, tasks, chat and docs in one workspace — no context switching between apps.</p></div>
+        <div class="bento-card"><div class="icon">◈</div><h4>Agentic Layer</h4><p>An AI that acts on intent — drafting, scheduling, summarising and routing without explicit commands.</p></div>
+        <div class="bento-card"><div class="icon">✦</div><h4>Design System</h4><p>A token-based design system built to scale across all surfaces and support future dev handoff.</p></div>
+      </div>
+    </section>
+
+    <!-- CURRENT UX PROGRESS -->
+    <section class="section">
+      <div class="section-tag reveal">// ux progress</div>
+      <h2 class="reveal">Where I am right now</h2>
+      <p class="reveal" style="transition-delay:40ms">This is an active, ongoing project. Here is the current state of the UX work — what is completed, what is actively being designed, and what is planned next.</p>
+
+      <div class="progress-track reveal" style="transition-delay:80ms">
+        <div class="phase-list">
+          <div class="phase-item">
+            <div class="phase-dot done"></div>
+            <div class="phase-body">
+              <h5>Research and Competitive Analysis <span class="status-tag status-done">Done</span></h5>
+              <p>Benchmarked Notion, Linear, Superhuman, Obsidian and upcoming AI workspace tools (Rewind, Mem, Artifacts). Identified the core gap — existing tools are reactive; they wait for input rather than anticipating intent.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot done"></div>
+            <div class="phase-body">
+              <h5>Persona and User Research <span class="status-tag status-done">Done</span></h5>
+              <p>Defined two primary personas — the graduate student managing research projects across multiple tools, and the solo-founder switching between CRM, email and task lists all day. Ran empathy mapping and identified three recurring themes: tool fatigue, lost context and decision overhead.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot done"></div>
+            <div class="phase-body">
+              <h5>Information Architecture <span class="status-tag status-done">Done</span></h5>
+              <p>Mapped the full IA — a unified command surface with contextual modules (Today View, Focus Mode, Inbox Zero), a persistent AI sidebar and a document/note graph for connected thinking. IA validated against both personas.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot active"></div>
+            <div class="phase-body">
+              <h5>Wireframing <span class="status-tag status-active">In Progress</span></h5>
+              <p>Currently wireframing the core workspace shell — Today View, the AI command palette, and the unified inbox. Exploring interaction patterns for the agentic layer: how suggestions surface, how the AI sidebar responds to context and how handoff to explicit tools works.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot pending"></div>
+            <div class="phase-body">
+              <h5>Design System <span class="status-tag status-pending">Up Next</span></h5>
+              <p>Building the token system and component library in Figma once the wire structure is locked — spatial tokens, motion language, AI-state visual indicators and dark/light mode foundations.</p>
+            </div>
+          </div>
+          <div class="phase-item">
+            <div class="phase-dot pending"></div>
+            <div class="phase-body">
+              <h5>High-Fidelity Screens <span class="status-tag status-pending">Planned</span></h5>
+              <p>Full hi-fi passes across all core surfaces — Today View, Focus Mode, Unified Inbox, Note Graph and the AI interaction layer — completing the major project submission deliverable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UX WORK DONE SO FAR -->
+    <section class="section">
+      <div class="section-tag reveal">// ux work so far</div>
+      <h2 class="reveal">What the research revealed</h2>
+      <p class="reveal" style="transition-delay:40ms">Three key insights from the research phase that are directly shaping every design decision in this project:</p>
+      <div class="work-done reveal" style="transition-delay:80ms">
+        <div class="work-card"><div class="wc-label">Insight 01</div><h4>Context collapse is the real cost</h4><p>Users do not lose time switching apps — they lose time rebuilding context. The product must make context persistent, not just consolidate surfaces.</p></div>
+        <div class="work-card"><div class="wc-label">Insight 02</div><h4>AI assistance must be ambient, not intrusive</h4><p>Every AI product benchmarked interrupted the user's flow. AgentOS needs an AI layer that surfaces at the edge of attention, not the centre.</p></div>
+        <div class="work-card"><div class="wc-label">Insight 03</div><h4>Mode switching is unavoidable — friction is not</h4><p>Users will always need to shift between deep work and communication. The design must make mode transitions deliberate and zero-friction.</p></div>
+        <div class="work-card"><div class="wc-label">Insight 04</div><h4>Trust is the UX challenge, not capability</h4><p>Research showed users are sceptical of AI taking action on their behalf. The agentic layer must show its reasoning, not just its output.</p></div>
+      </div>
+    </section>
+
+    <!-- ROLE -->
+    <section class="section">
+      <div class="section-tag reveal">// my role</div>
+      <h2 class="reveal">What I own on this project</h2>
+      <p class="reveal" style="transition-delay:40ms">I am the UX lead — responsible for the full design pipeline from research to handoff-ready Figma deliverables.</p>
+      <div class="tag-list reveal" style="transition-delay:80ms">
+        <span>Competitive Analysis</span><span>Persona Research</span><span>Empathy Mapping</span><span>Information Architecture</span><span>Wireframing</span><span>Interaction Design</span><span>Design System</span><span>Hi-Fi Screens</span>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-block reveal">
+      <h2>This project is actively in progress.</h2>
+      <p>If you would like to follow the design process, discuss the project or collaborate, feel free to reach out directly.</p>
+      <div class="hero-actions">
+        <a href="index.html#contact" class="btn btn-primary">Get in touch</a>
+        <a href="index.html#work" class="btn btn-secondary">Other Projects</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>2026 Rohit M - Chennai, India</footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
