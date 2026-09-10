@@ -13,21 +13,21 @@
        DESIGN TOKENS
     ============================================ */
     :root {
-      --bg:            #0a0908;
-      --bg-deep:       #050403;
-      --bg-elevated:   #151310;
-      --surface:       rgba(255,255,255,0.045);
-      --surface-hover: rgba(255,255,255,0.075);
-      --fg:            #F3EEE4;
-      --fg-muted:      #9C9184;
-      --fg-subtle:     rgba(243,238,228,0.45);
-      --accent:        #C9A876;
-      --accent-bright: #DFC08F;
-      --accent-gold:   #B4924F;
-      --accent-glow:   rgba(201,168,118,0.22);
-      --border:        rgba(230,215,190,0.10);
-      --border-hover:  rgba(230,215,190,0.20);
-      --border-accent: rgba(201,168,118,0.35);
+      --bg:            #F8FAFC;
+      --bg-deep:       #F1F5F9;
+      --bg-elevated:   #FFFFFF;
+      --surface:       #FFFFFF;
+      --surface-hover: #F8FAFC;
+      --fg:            #0F172A;
+      --fg-muted:      #475569;
+      --fg-subtle:     #64748B;
+      --accent:        #2563EB;
+      --accent-bright: #3B82F6;
+      --accent-gold:   #1D4ED8;
+      --accent-glow:   rgba(37, 99, 235, 0.20);
+      --border:        rgba(15, 23, 42, 0.08);
+      --border-hover:  rgba(37, 99, 235, 0.35);
+      --border-accent: rgba(37, 99, 235, 0.25);
       --ease:          cubic-bezier(0.16,1,0.3,1);
       --r:             16px;
     }
@@ -44,14 +44,14 @@
     ::selection { background: var(--accent-glow); color: #fff; }
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg-deep); }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 8px; }
-    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+    ::-webkit-scrollbar-thumb { background: rgba(24,22,20,0.15); border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(24,22,20,0.28); }
 
     /* ============================================
        BACKGROUND
     ============================================ */
-    .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(230,215,190,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(230,215,190,0.018) 1px, transparent 1px); background-size: 64px 64px; }
-    .bg-glow { position: fixed; top: -25%; left: 50%; transform: translateX(-50%); width: 1100px; height: 700px; border-radius: 50%; background: radial-gradient(ellipse, rgba(201,168,118,0.065) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(24,22,20,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(24,22,20,0.025) 1px, transparent 1px); background-size: 64px 64px; }
+    .bg-glow { position: fixed; top: -25%; left: 50%; transform: translateX(-50%); width: 1100px; height: 700px; border-radius: 50%; background: radial-gradient(ellipse, rgba(220,192,143,0.18) 0%, transparent 70%); pointer-events: none; z-index: 0; }
 
     /* ============================================
        LAYOUT
@@ -63,7 +63,7 @@
        TOP NAV
     ============================================ */
     .cs-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: center; padding: 14px 24px; pointer-events: none; }
-    .cs-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 8px 8px 18px; border-radius: 100px; border: 1px solid var(--border); background: rgba(8,8,10,0.72); backdrop-filter: blur(24px) saturate(140%); box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 8px 30px rgba(0,0,0,0.45); width: min(860px, calc(100vw - 48px)); pointer-events: all; }
+    .cs-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 8px 8px 18px; border-radius: 100px; border: 1px solid var(--border); background: rgba(255,255,255,0.85); backdrop-filter: blur(24px) saturate(140%); box-shadow: 0 4px 20px rgba(24,22,20,0.06); width: min(860px, calc(100vw - 48px)); pointer-events: all; }
     .cs-nav-brand { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; flex-shrink: 0; }
     .cs-nav-brand-mark { width: 24px; height: 24px; border-radius: 7px; background: linear-gradient(135deg, var(--accent-bright), var(--accent-gold)); display: flex; align-items: center; justify-content: center; font-family: "Fraunces", serif; font-size: 12px; font-weight: 560; color: #171310; }
     .cs-nav-sections { display: flex; gap: 2px; align-items: center; }
